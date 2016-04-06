@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-var classSchema = Schema({
+var ClassSchema = Schema({
 	
 	name: String,
 
@@ -15,10 +15,10 @@ var classSchema = Schema({
 	
 	classTimes: [{
 		day_of_week: String,
-		start_hour: Integer,
-		start_min: Integer,
-		end_hour: Integer,
-		end_min: Integer
+		start_hour: Number,
+		start_min: Number,
+		end_hour: Number,
+		end_min: Number
 	}],
 	
 	start_date: Date,
@@ -28,4 +28,4 @@ var classSchema = Schema({
 	holidays: [{ type: Date }]
 });
 
-module.exports = mongoose.model('Class', classSchema);
+module.exports = mongoose.model('Class', ClassSchema);

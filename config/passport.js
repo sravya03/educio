@@ -1,6 +1,6 @@
 var LocalStrategy   = require('passport-local').Strategy;
 
-var Teacher            = require('../app-server/models/teacher');
+var Teacher         = require('../app-server/models/teacher');
 
 module.exports = function(passport) {
 
@@ -9,7 +9,7 @@ module.exports = function(passport) {
     });
 
     passport.deserializeUser(function(id, done) {
-        Teacher.findById(id, function(err, teacher) {
+        Teacher.findById(id).populate('classes').exec(function(err, teacher) {
             done(err, teacher);
         });
     });
@@ -29,7 +29,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
 
         // find a teacher whose email is the same as the forms email
-        Teacher.findOne({ 'local.email' :  email }, function(err, teacher) {
+        Teacher.findOne({ 'local.email' :  email }).populate('classes').exec(function(err, teacher) {
             // if there are any errors, return the error
             if (err)
                 return done(err);
@@ -71,7 +71,7 @@ module.exports = function(passport) {
 
         // find a teacher whose email is the same as the forms email
         // we are checking to see if the teacher trying to login already exists
-        Teacher.findOne({ 'local.email' :  email }, function(err, teacher) {
+        Teacher.findOne({ 'local.email' :  email }).populate('classes').exec(function(err, teacher) {
             // if there are any errors, return the error before anything else
             if (err)
                 return done(err);
@@ -83,7 +83,6 @@ module.exports = function(passport) {
             // all is well, return successful teacher
             return done(null, teacher);
         });
-
     }));
 
 };

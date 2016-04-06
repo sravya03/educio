@@ -11,9 +11,9 @@ var assignmentSchema = Schema({
 
 	due_date: Date,
 
-	total_score: Integer,
+	total_score: Number,
 
-	student_grades: [{ student_id: ObjectId, grade: Integer }]
+	student_grades: [{ student_id: ObjectId, grade: Number }]
 });
 
 module.exports = mongoose.model('Assignment', assignmentSchema);

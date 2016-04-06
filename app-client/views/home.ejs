@@ -4,9 +4,17 @@
 </head>
 <body>
 
-<% for (var classObj in teacher.classes ) { %>
-  <button><%= classObj.name %></button>
-<% } %>
+<div id="header">
+	<%- include partials/header.ejs %>
+</div>
+
+<div id="main-content">
+	<% teacher.classes.forEach(function(classObj) { %>
+	  <a href="/class/<%= classObj._id %>"><%= classObj.name %></a>
+	<% }) %>
+</div>
+
+<%- include partials/footer.ejs %>
 
 </body>
 </html>

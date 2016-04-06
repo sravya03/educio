@@ -1,0 +1,9 @@
+<div id="header-navbar">
+	<% if (typeof teacher == 'undefined') { %>
+		<div><a href="/login">Login</a></div>
+	    <div><a href="/signup">Signup</a></div>
+	<% } else { %>  
+		<div><%= teacher.first_name %> <%= teacher.last_name %></div>
+	    <div><a href="/logout">Logout</a></div>
+	<% } %>
+</div>

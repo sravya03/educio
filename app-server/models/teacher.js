@@ -4,7 +4,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
-var teacherSchema = Schema({
+var TeacherSchema = Schema({
 
     // for local credentials other methods can be added
     // i.e Facebook login
@@ -21,13 +21,13 @@ var teacherSchema = Schema({
 });
 
 // generating a hash
-teacherSchema.methods.generateHash = function(password) {
+TeacherSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 // checking if password is valid
-teacherSchema.methods.validPassword = function(password) {
+TeacherSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 };
 
-module.exports = mongoose.model('Teacher', teacherSchema);
+module.exports = mongoose.model('Teacher', TeacherSchema);

@@ -1,4 +1,5 @@
 var path    = require("path");
+var Class   = require("./models/class");
 
 module.exports = function(app, passport) {
 
@@ -27,16 +28,28 @@ module.exports = function(app, passport) {
     }));
 
     app.get('/home', isLoggedIn, function(req, res) {
-        console.log("teacher in req: ");
-        console.log(req.user);
         res.render('home.ejs', {
-            teacher : req.user // get the teacher out of session and pass to template
+            teacher : req.user,
+            message : req.flash('classAccessPermission')
         });
     });
 
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    app.get('/class/:id', isLoggedIn, function(req, res, next) {
+        Class.findOne({ 'teacher' : req.user._id }, function(err, classObj) {
+            if (classObj) {
+                res.render('class_view', {
+                    classObj: classObj
+                });
+            } else {
+                req.flash('classAccessPermission', 'Sorry, you do not teach this class.');
+                res.redirect('/home');
+            }
+        })
     });
 };
 
