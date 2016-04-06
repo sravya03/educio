@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title>Educio Signup</title>
+</head>
+<body>
+
+<% if (message.length > 0) { %>
+    <div><%= message %></div>
+<% } %>
+
+<form action="/signup" method="post" class="simple-form">
+  E-mail: <input type="email" name="email" /><br />
+  Password: <input type="text" name="password" />
+  <input type="submit" value="Signup" />
+</form>
+
+<p>Already have an account? <a href="/login">Login</a></p>
+<p>Or go <a href="/">home</a>.</p>
+
+</body>
+</html>

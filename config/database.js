@@ -1,3 +1,3 @@
 module.exports = {
-	'url': 'some mongodb url'
+	'url': 'mongodb://educio:educio@jello.modulusmongo.net:27017/woB7yzez'
 }
