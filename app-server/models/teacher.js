@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
+var Class    = require('./class');
 
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
@@ -15,9 +16,7 @@ var TeacherSchema = Schema({
 
     first_name: String,
 
-    last_name: String,
-    
-    classes: [{ type: ObjectId, ref: 'Class' }]
+    last_name: String
 });
 
 // generating a hash
@@ -28,6 +27,10 @@ TeacherSchema.methods.generateHash = function(password) {
 // checking if password is valid
 TeacherSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
+};
+
+TeacherSchema.methods.getClasses = function(callback) {
+    return Class.find({ 'teacher' : this._id }, callback);
 };
 
 module.exports = mongoose.model('Teacher', TeacherSchema);

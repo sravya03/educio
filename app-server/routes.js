@@ -1,5 +1,6 @@
 var path    = require("path");
 var Class   = require("./models/class");
+var Teacher = require("./models/teacher");
 
 module.exports = function(app, passport) {
 
@@ -28,9 +29,15 @@ module.exports = function(app, passport) {
     }));
 
     app.get('/home', isLoggedIn, function(req, res) {
-        res.render('home.ejs', {
-            teacher : req.user,
-            message : req.flash('classAccessPermission')
+        req.user.getClasses(function(err, classes) {
+            if (err) {
+                return;
+            }
+            res.render('home.ejs', {
+                teacher : req.user,
+                classes : classes,
+                message : req.flash('classAccessPermission')
+            })
         });
     });
 
@@ -40,7 +47,7 @@ module.exports = function(app, passport) {
     });
 
     app.get('/class/:id', isLoggedIn, function(req, res, next) {
-        Class.findOne({ 'teacher' : req.user._id }, function(err, classObj) {
+        Class.findOne({ 'teacher' : req.user._id, '_id' : req.params.id }, function(err, classObj) {
             if (classObj) {
                 res.render('class_view', {
                     classObj: classObj
@@ -49,7 +56,24 @@ module.exports = function(app, passport) {
                 req.flash('classAccessPermission', 'Sorry, you do not teach this class.');
                 res.redirect('/home');
             }
-        })
+        });
+    });
+
+    app.get('/newclass', function(req, res) {
+        res.render('new_class.ejs', {message: req.flash('newClassMessage') });
+    });
+
+    app.post('/newclass', function(req, res) {
+        var newClass = new Class();
+        newClass.name = req.body.className;
+        newClass.teacher = req.user._id;
+        newClass.save(function(err) {
+            if (err)
+                req.flash('newClassMessage', 'Unable to add your new class at this time.');
+            else {
+                res.redirect('/home');
+            }
+        });
     });
 };
 

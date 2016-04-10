@@ -9,7 +9,7 @@
 </div>
 
 <div id="main-content">
-	<% teacher.classes.forEach(function(classObj) { %>
+	<% classes.forEach(function(classObj) { %>
 	  <a href="/class/<%= classObj._id %>"><%= classObj.name %></a>
 	<% }) %>
 </div>

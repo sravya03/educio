@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>Add Class</title>
+</head>
+<body>
+
+<% if (message.length > 0) { %>
+    <div><%= message %></div>
+<% } %>
+
+<form action="/newClass" method="post" class="simple-form">
+  Name: <input type="text" name="className" /><br />
+  <input type="submit" value="Add" />
+</form>
+
+</body>
+</html>

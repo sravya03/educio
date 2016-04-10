@@ -7,4 +7,4 @@ var agendaItemSchema = Schema({
 	
 });
 
-module.exports = mongoose.model('AgendaItem', lectureSchema);
+module.exports = mongoose.model('AgendaItem', agendaItemSchema);
