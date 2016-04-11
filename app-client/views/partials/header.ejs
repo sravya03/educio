@@ -6,8 +6,16 @@
 
 <div id="header-navbar">
 	<% if (typeof teacher == 'undefined') { %>
-		<div><a href="/login">Login</a></div><br>
-	    <div><a href="/signup">Signup</a></div>
+		<div class="login-page">
+			<h1>Educio</h1>
+			<form class="login-form" action="/login" method="post">
+				<input type="text" placeholder="email" name="email" />
+				<input type="password" placeholder="password" name="password"/>
+					<button class="loginButton">login</button>
+			</form>
+
+			<p>Don't have an account? <a href="/signup">Signup</a></p>
+		</div>
 	<% } else { %>  
 		<div><%= teacher.first_name %> <%= teacher.last_name %></div>
 	    <div><a href="/logout">Logout</a></div>
