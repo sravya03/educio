@@ -1,4 +1,5 @@
 var path    = require("path");
+var mockClassDataObj = require("./mock_data/mockClassDataObj");
 var Class   = require("./models/class");
 var Teacher = require("./models/teacher");
 
@@ -47,16 +48,17 @@ module.exports = function(app, passport) {
     });
 
     app.get('/class/:id', isLoggedIn, function(req, res, next) {
-        Class.findOne({ 'teacher' : req.user._id, '_id' : req.params.id }, function(err, classObj) {
-            if (classObj) {
-                res.render('class_view', {
-                    classObj: classObj
-                });
-            } else {
-                req.flash('classAccessPermission', 'Sorry, you do not teach this class.');
-                res.redirect('/home');
-            }
-        });
+        // Class.findOne({ 'teacher' : req.user._id, '_id' : req.params.id }, function(err, classObj) {
+        //     if (classObj) {
+        //         res.render('class_view', {
+        //             classObj: classObj
+        //         });
+        //     } else {
+        //         req.flash('classAccessPermission', 'Sorry, you do not teach this class.');
+        //         res.redirect('/home');
+        //     }
+        // });
+        res.render('class_view.ejs', { classObj: mockClassDataObj });
     });
 
     app.get('/newclass', function(req, res) {
