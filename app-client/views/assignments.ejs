@@ -1,0 +1,40 @@
+<html ng-app="educioModule">
+<head>
+  <title>Educio</title>
+  <link rel="stylesheet" href="/assignments.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+  <script type="text/javascript" src="/angularjs-module.js"></script>
+</head>
+<body>
+
+<%- include partials/header.ejs %>
+
+<div id="main-content">
+  <div id="assignments">
+
+  <!-- TODO: The circular shape navigation must be implemented. -->
+    <h4>Assignments</h4>
+    <table class="table table-hover">
+      <tr>
+        <td id="name">Triangle Homework</td>
+      </tr>
+      <tr>
+        <td id="name">Factorization</td>
+      </tr>
+      <tr>
+        <td id="name">Multiplication</td>
+      </tr>
+      <tr>
+        <td id="name">Exam One</td>
+      </tr>
+    </table>
+  </div>
+  <ng-view></ng-view>
+</div>
+
+</body>
+</html>
