@@ -1,0 +1,18 @@
+#att_grades {
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    margin: -100px 0 0 -100px;
+}
+
+#present {
+	color: green;
+}
+
+#absent {
+	color: red;
+}
+
+#tardy {
+	color: gold;
+}
