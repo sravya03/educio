@@ -1,7 +1,8 @@
 <html>
 <head>
   <title>Educio Signup</title>
-  <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="signup.css" />
+  	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
@@ -15,7 +16,7 @@
 <% if (message.length > 0) { %>
     <div><%= message %></div>
 <% } %>
-<div id="signupPage">
+<div id="signup-page">
 	<form role="form" action="/signup" method="post">
 		<div class="form-group">
 			<label for="firstName">First Name:</label>
