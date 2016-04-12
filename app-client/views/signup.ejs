@@ -1,23 +1,44 @@
 <html>
 <head>
   <title>Educio Signup</title>
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <% if (message.length > 0) { %>
     <div><%= message %></div>
 <% } %>
+<div id="signupPage">
+	<form role="form" action="/signup" method="post">
+		<div class="form-group">
+			<label for="firstName">First Name:</label>
+	  		<input type="text" class="form-control" id="firstName">
+	  	</div>
+	  	<div class="form-group">
+			<label for="lastName">Last Name:</label>
+	  		<input type="text" class="form-control" id="lastName">
+	  	</div>
+	  	<div class="form-group">
+		    <label for="email">Email address:</label>
+		    <input type="email" class="form-control" id="email">
+		</div>
+	  	<div class="form-group">
+	    	<label for="pwd">Password:</label>
+	    	<input type="password" class="form-control" id="pwd">
+	  	</div>
+	  	<button type="submit" class="btn btn-default">Submit</button>
+	</form>
 
-<form action="/signup" method="post" class="simple-form">
-  First Name: <input type="text" name="firstName" /><br />
-  Last Name: <input type="text" name="lastName" /><br />
-  E-mail: <input type="email" name="email" /><br />
-  Password: <input type="text" name="password" />
-  <input type="submit" value="Signup" />
-</form>
-
-<p>Already have an account? <a href="/login">Login</a></p>
-<p>Or go <a href="/">home</a>.</p>
+	<p>Already have an account? <a href="/login">Login</a></p>
+	<p>Or go <a href="/">home</a>.</p>
+</div>
 
 </body>
 </html>
