@@ -5,7 +5,7 @@ var Teacher = require("./models/teacher");
 module.exports = function(app, passport) {
 
     app.get('/', function(req, res) {
-        res.render('login.ejs');
+        res.redirect('/login');
     });
 
     app.get('/login', function(req, res) {
@@ -43,7 +43,7 @@ module.exports = function(app, passport) {
 
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/');
+        res.redirect('/login');
     });
 
     app.get('/class/:id', isLoggedIn, function(req, res, next) {
