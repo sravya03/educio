@@ -1,8 +1,19 @@
-<div id="header-navbar">
-	<% if (typeof teacher == 'undefined') { %>
-		<!-- Add header information for when the user is not logged in -->
-	<% } else { %>  
-		<div><%= teacher.first_name %> <%= teacher.last_name %></div>
-	    <div><a href="/logout">Logout</a></div>
-	<% } %>
-</div>
+<!DOCTYPE html>
+<html>
+  	<head>
+  		<link rel="stylesheet" href="header.css">
+    	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	</head>
+  	<body>
+		<div id="header-navbar">
+			<% if (typeof teacher == 'undefined') { %>
+				<!-- Add header information for when the user is not logged in -->
+			<% } else { %>  
+				<div><%= teacher.first_name %> <%= teacher.last_name %></div>
+			    <div id="logoutButton"><a href="/logout" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-log-out"></span>Logout</a></div>
+			<% } %>
+		</div>
+	</body>
+</html>
