@@ -5,7 +5,7 @@ var Teacher = require("./models/teacher");
 module.exports = function(app, passport) {
 
     app.get('/', function(req, res) {
-        res.render('educio.ejs');
+        res.render('login.ejs');
     });
 
     app.get('/login', function(req, res) {
