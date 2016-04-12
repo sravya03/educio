@@ -1,19 +1,44 @@
 <html ng-app="educioApp">
 <head>
-  <title>Educio</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
-  <script type="text/javascript" src="angularjs-config.js"></script>
+	<title>Educio</title>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
+  	<script type="text/javascript" src="angularjs-config.js"></script>
+  	<link rel="stylesheet" href="login.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <%- include partials/header.ejs %>
 
 <div id="main-content">
-	<!-- A beautiful image could go here in the middle of the page. -->
-</div>
+	<div id="header-navbar">
+		<% if (typeof teacher == 'undefined') { %>
+			<div class="login-page">
+				<form class="login-form" action="/login" method="post">
+		        	<h2 class="form-signin-heading">Educio</h2>
+		        	<label for="inputEmail" class="sr-only">Email address</label>
+		        	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required autofocus>
+		        	<label for="inputPassword" class="sr-only">Password</label>
+		        	<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required><br>
+		        	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		      	</form>
 
-<%- include partials/footer.ejs %>
+				<p>Don't have an account? <a href="/signup">Signup</a></p>
+			</div>
+
+		<% } else { %>  
+			<div><%= teacher.first_name %> <%= teacher.last_name %></div>
+		    <div><a href="/logout">Logout</a></div>
+		<% } %>
+	</div>
+</div>
 
 </body>
 </html>
