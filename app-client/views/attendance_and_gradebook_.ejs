@@ -1,0 +1,57 @@
+<html ng-app="educioModule">
+<head>
+  <title>Educio</title>
+  <link rel="stylesheet" href="/class_view.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+  <script type="text/javascript" src="/angularjs-module.js"></script>
+</head>
+<body>
+
+<%- include partials/header.ejs %>
+
+<div id="main-content">
+	<!-- TODO: The circular shape navigation must be implemented. -->
+	<table>
+		<tr>
+			<h4>Attendance: <span id="present">P - Present</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="absent">A - Absent</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="tardy">T - Tardy</span></h4>
+		</tr>
+		<tr>
+			<th>Student</th>
+			<th>Attendance</th>
+			<th>Grade</th>
+		</tr>
+		<tr>
+		    <td>Sally Brown</td>
+		    <td><input type="text" name="attendance" value="P"></td>
+		    <td>A-</td>
+	  	</tr>
+	  	<tr>
+		    <td>Sally Brown</td>
+		    <td><input type="text" name="attendance" value="P"></td>
+		    <td>A-</td>
+	  	</tr>
+	  	<tr>
+		    <td>Sally Brown</td>
+		    <td><input type="text" name="attendance" value="P"></td>
+		    <td>A-</td>
+	  	</tr>
+	  	<tr>
+		    <td>Sally Brown</td>
+		    <td><input type="text" name="attendance" value="P"></td>
+		    <td>A-</td>
+	  	</tr>
+	  	<tr>
+		    <td>Sally Brown</td>
+		    <td><input type="text" name="attendance" value="P"></td>
+		    <td>A-</td>
+	  	</tr>
+	</table>
+	<ng-view></ng-view>
+</div>
+
+</body>
+</html>
