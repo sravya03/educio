@@ -1,6 +1,7 @@
 <html>
 <head>
-  <title>Educio</title>
+	<title>Educio</title>
+  	<link rel="stylesheet" href="home.css" />
 </head>
 <body>
 
@@ -12,10 +13,12 @@
 	<% classes.forEach(function(classObj) { %>
 	  <a href="/class/<%= classObj._id %>"><%= classObj.name %></a>
 	<% }) %>
-	<button><a href="class/">English</a></button>
-	<button><a href="class/">Geometry</a></button>
-	<button><a href="class/">Calculus I</a></button>
-	<button><a href="class/">Algebra</a></button>
+	<div id="classes">
+		<button><a href="class/">English</a></button>
+		<button><a href="class/">Geometry</a></button>
+		<button><a href="class/">Calculus I</a></button>
+		<button><a href="class/">Algebra</a></button>
+	</div>
 </div>
 
 </body>
