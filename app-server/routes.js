@@ -81,14 +81,14 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/class/:id/att_and_gradebook', isLoggedIn, function(req, res) {
+    app.get('/class/:id/attendance_and_gradebook', isLoggedIn, function(req, res) {
         res.render('attendance_and_gradebook.ejs', {
             teacher : req.user
         });
     });
 
 
-    app.get('/class_information', isLoggedIn, function(req, res) {
+    app.get('/class/:id/class_information', isLoggedIn, function(req, res) {
         res.render('class_information.ejs');
     });
 };
