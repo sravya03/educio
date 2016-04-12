@@ -8,6 +8,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
   <script type="text/javascript" src="/angularjs-module.js"></script>
+
+
+
+
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
 </head>
 <body>
 
@@ -17,7 +28,13 @@
   <div id="assignments">
 
   <!-- TODO: The circular shape navigation must be implemented. -->
-    <h4>Assignments</h4>
+
+    <div id="top-functions">
+      <button type="button" class="btn btn-danger" style="border-radius:50%; font-size:16px; font-weight: bold;">-</button>
+      <button type="button" class="btn btn-success" style="border-radius:50%; font-size:16px; font-weight: bold; float:right;">+</button>
+    </div>
+
+    <h4 style="text-align: center;">Assignments</h4>
     <table class="table table-hover">
       <tr>
         <td id="name">Triangle Homework</td>
