@@ -64,11 +64,11 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/newclass', function(req, res) {
+    app.get('/newclass', isLoggedIn, function(req, res) {
         res.render('new_class.ejs', {message: req.flash('newClassMessage') });
     });
 
-    app.post('/newclass', function(req, res) {
+    app.post('/newclass', isLoggedIn, function(req, res) {
         var newClass = new Class();
         newClass.name = req.body.className;
         newClass.teacher = req.user._id;
@@ -81,14 +81,14 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.get('/class/:id/att_and_gradebook', function(req, res) {
+    app.get('/class/:id/att_and_gradebook', isLoggedIn, function(req, res) {
         res.render('attendance_and_gradebook.ejs', {
             teacher : req.user
         });
     });
 
 
-    app.get('/class_information', function(req, res) {
+    app.get('/class_information', isLoggedIn, function(req, res) {
         res.render('class_information.ejs');
     });
 };
