@@ -1,7 +1,6 @@
 <div id="header-navbar">
 	<% if (typeof teacher == 'undefined') { %>
-		<div><a href="/login">Login</a></div>
-	    <div><a href="/signup">Signup</a></div>
+		<!-- Add header information for when the user is not logged in -->
 	<% } else { %>  
 		<div><%= teacher.first_name %> <%= teacher.last_name %></div>
 	    <div><a href="/logout">Logout</a></div>
