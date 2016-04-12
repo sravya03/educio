@@ -11,8 +11,10 @@
 			<% if (typeof teacher == 'undefined') { %>
 				<!-- Add header information for when the user is not logged in -->
 			<% } else { %>  
-				<div id="name"><%= teacher.first_name %> <%= teacher.last_name %></div>
-			    <div id="logoutButton"><a href="/logout" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-log-out"></span>Logout</a></div>
+				<div id="right-child-navbar">
+					<div id="name"><%= teacher.first_name %> <%= teacher.last_name %></div>
+				    <div id="logoutButton"><a href="/logout" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-log-out"></span>Logout</a></div>
+			    </div>
 			<% } %>
 		</div>
 	</body>

@@ -1,10 +1,12 @@
 #logoutButton {
-    padding:8 0 0 16;
-    float: left;
+    padding:4 8 0 16;
 }
 
 #name {
-	float: left;
 	font-size: 14px;
-	padding:16 0 0 16;
+	padding:16 8 0 16;
+}
+
+#right-child-navbar {
+	float:right;
 }
