@@ -86,6 +86,11 @@ module.exports = function(app, passport) {
             teacher : req.user
         });
     });
+
+
+    app.get('/class_information', function(req, res) {
+        res.render('class_information.ejs');
+    });
 };
 
 /**

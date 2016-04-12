@@ -1,0 +1,26 @@
+<html ng-app="educioModule">
+<head>
+  <title>Educio</title>
+  <link rel="stylesheet" href="/class_information.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+  <script type="text/javascript" src="/angularjs-module.js"></script>
+</head>
+<body>
+
+<%- include partials/header.ejs %>
+
+<div id="main-content">
+	<!-- TODO: The circular shape navigation must be implemented. -->
+	<div id="classInfo">
+		<p id="className">Class Name:<input type="text" name="attendance" value="Class Name"></p>
+		<p id="time">Class Time:<input type="text" name="attendance" value="Date and Time"></p>
+	</div>
+	<ng-view></ng-view>
+</div>
+
+</body>
+</html>
