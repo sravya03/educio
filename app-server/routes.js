@@ -58,7 +58,10 @@ module.exports = function(app, passport) {
         //         res.redirect('/home');
         //     }
         // });
-        res.render('class_view.ejs', { classObj: mockClassDataObj });
+        res.render('class_view.ejs', {
+            teacher : req.user,
+            classObj: mockClassDataObj
+        });
     });
 
     app.get('/newclass', function(req, res) {
