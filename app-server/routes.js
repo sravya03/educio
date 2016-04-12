@@ -84,6 +84,11 @@ module.exports = function(app, passport) {
     app.get('/att_and_gradebook', function(req, res) {
         res.render('attendance_and_gradebook.ejs');
     });
+
+
+    app.get('/class_information', function(req, res) {
+        res.render('class_information.ejs');
+    });
 };
 
 /**
