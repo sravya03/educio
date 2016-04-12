@@ -19,6 +19,8 @@
 	<% classes.forEach(function(classObj) { %>
 	  <a href="/class/<%= classObj._id %>"><%= classObj.name %></a>
 	<% }) %>
+	<canvas id="circleCanvas" width="800" height="800" style="border:1px solid #d3d3d3;"></canvas>
+
 	<div id="classes">
 		<div class="btn-group">
 			<button type="button" class="btn btn-primary btn-lg" style="font-size:60px;"><a href="class/1">English</a></button>
@@ -28,6 +30,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var c = document.getElementById("circleCanvas");
+	var ctx = c.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(400,375,350,0,2*Math.PI);
+	ctx.stroke();
+</script> 
 
 </body>
 </html>
