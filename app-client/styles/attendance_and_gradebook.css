@@ -5,6 +5,11 @@
     margin: -100px 0 0 -100px;
 }
 
+#currentDate {
+	font-size: 36px;
+	text-align: center;
+}
+
 #present {
 	color: green;
 }
