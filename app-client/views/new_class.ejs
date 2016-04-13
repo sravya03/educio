@@ -15,35 +15,42 @@
 	<div id="newClass" class="row">
 		<h2 id="form-signin-heading">Add Class</h2>
 
-		<form action="/newClass" method="post" class="simple-form">
-			<label for="className">Class Name:</label>
-    		<input type="text" id="className" class="form-control" name="className" required autofocus>
-	    </form>
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label for="className" class="col-lg-2 control-label">Class Name:</label>
+		    <div class="col-lg-10">
+		    	<input type="text" id="className" class="form-control" name="className" required autofocus>
+		    </div>
+		  </div>
 
-		<div id="classDates" class="col-md-">
-    		<label for="classDates">Class Dates: </label>
-    		<label class="checkbox-inline"><input type="checkbox" value="M">M</label>
-			<label class="checkbox-inline"><input type="checkbox" value="T">T</label>
-			<label class="checkbox-inline"><input type="checkbox" value="W">W</label>
-			<label class="checkbox-inline"><input type="checkbox" value="Th">Th</label>
-			<label class="checkbox-inline"><input type="checkbox" value="F">F</label>
-		</div><br>
+		  <div class="form-group">
+		  	<label for="classDates" class="col-lg-2 control-label">Class Dates:</label>
+		  	<div class="col-lg-10">
+		  		<label class="checkbox-inline"><input type="checkbox" value="M">M</label>
+				<label class="checkbox-inline"><input type="checkbox" value="T">T</label>
+				<label class="checkbox-inline"><input type="checkbox" value="W">W</label>
+				<label class="checkbox-inline"><input type="checkbox" value="Th">Th</label>
+				<label class="checkbox-inline"><input type="checkbox" value="F">F</label>
+		  	</div>
+		  </div>
 
-		<div id="classTime">
-			<label for="className">Class Time: </label>
-			
-			<div class="input-group bootstrap-timepicker timepicker">
-	            <input id="timepicker1" type="text" class="form-control input-small">
-	            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-	        </div>
-	 
-	        <script type="text/javascript">
-	            jQuery('#timepicker1').timepicker();
-	        </script>
-	    </div><br>
+		  <div class="form-group">
+		  	<label for="classTime" class="col-lg-2 control-label">Class Time:</label>
+		    <div class="col-lg-10">
+		    	<div id="timepicker1" style="width: 25%;" class="input-group bootstrap-timepicker timepicker">
+	            	<input type="text" class="form-control input-small">
+	            	<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+	        	</div>
+
+	        	<script type="text/javascript">
+		            jQuery('#timepicker1').timepicker();
+		        </script>
+		    </div>
+		  </div>
 	    
-    	<button class="btn btn-lg btn-primary btn-block" type="submit">Add Class</button>
-		</form>
+    	  <button class="btn btn-lg btn-primary btn-block" type="submit">Add Class</button>
+    	</form>
 	</div>
+	
 </body>
 </html>
