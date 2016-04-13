@@ -37,13 +37,16 @@
 		  <div class="form-group">
 		  	<label for="classTime" class="col-lg-2 control-label">Class Time:</label>
 		    <div class="col-lg-10">
-		    	<div id="timepicker1" style="width: 25%;" class="input-group bootstrap-timepicker timepicker">
-	            	<input type="text" class="form-control input-small">
-	            	<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		    	<div style="width: 25%;" class="input-group bootstrap-timepicker timepicker">
+	            	<input type="text" id="timepicker1" class="form-control input-small">
+	            	<span id="timer-icon" class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 	        	</div>
 
 	        	<script type="text/javascript">
-		            jQuery('#timepicker1').timepicker();
+		            var timepickerObj = jQuery('#timepicker1').timepicker();
+		            jQuery('#timer-icon').click(function() {
+		            	jQuery('#timepicker1').trigger('click');
+		            });
 		        </script>
 		    </div>
 		  </div>
@@ -51,6 +54,6 @@
     	  <button class="btn btn-lg btn-primary btn-block" type="submit">Add Class</button>
     	</form>
 	</div>
-	
+
 </body>
 </html>
