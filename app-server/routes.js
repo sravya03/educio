@@ -54,6 +54,15 @@ module.exports = function(app, passport) {
         });
     });
 
+    app.get('/class/:id/agenda/:month/:day/:year', isLoggedIn, function(req, res) {
+        res.render('class_agenda_notes.ejs', {
+            teacher : req.user,
+            month : req.month,
+            day : req.day,
+            year : req.year
+        });
+    });
+
     app.get('/newclass', isLoggedIn, function(req, res) {
         res.render('new_class.ejs', {message: req.flash('newClassMessage') });
     });

@@ -48,9 +48,7 @@ if(!String.prototype.formatNum) {
 		return r;
 	};
 }
-console.log("Did i ever make it through the file INIITAL!");
 (function($) {
-	console.log("Did i ever make it to the load function BEGINNING!");
 	var defaults = {
 		// Width of the calendar
 		width: '100%',
@@ -990,16 +988,16 @@ console.log("Did i ever make it through the file INIITAL!");
 
 		$('*[data-toggle="tooltip"]').tooltip({container: 'body'});
 
-		$('*[data-cal-date]').click(function() {
-			var view = $(this).data('cal-view');
-			self.options.day = $(this).data('cal-date');
-			self.view(view);
-		});
-		$('.cal-cell').dblclick(function() {
-			var view = $('[data-cal-date]', this).data('cal-view');
-			self.options.day = $('[data-cal-date]', this).data('cal-date');
-			self.view(view);
-		});
+		// $('*[data-cal-date]').click(function() {
+		// 	var view = $(this).data('cal-view');
+		// 	self.options.day = $(this).data('cal-date');
+		// 	self.view(view);
+		// });
+		// $('.cal-cell').dblclick(function() {
+		// 	var view = $('[data-cal-date]', this).data('cal-view');
+		// 	self.options.day = $('[data-cal-date]', this).data('cal-date');
+		// 	self.view(view);
+		// });
 
 		this['_update_' + this.options.view]();
 
@@ -1256,7 +1254,6 @@ console.log("Did i ever make it through the file INIITAL!");
 	}
 
 	$.fn.calendar = function(params) {
-		console.log("did we ever arrive FINAL");
 		return new Calendar(params, this);
 	}
 }(jQuery));
