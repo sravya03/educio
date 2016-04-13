@@ -57,9 +57,9 @@ module.exports = function(app, passport) {
     app.get('/class/:id/agenda/:month/:day/:year', isLoggedIn, function(req, res) {
         res.render('class_agenda_notes.ejs', {
             teacher : req.user,
-            month : req.month,
-            day : req.day,
-            year : req.year
+            month : req.params.month,
+            day : req.params.day,
+            year : req.params.year
         });
     });
 
