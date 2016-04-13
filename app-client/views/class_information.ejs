@@ -1,6 +1,6 @@
 <html ng-app="educioModule">
 <head>
-  <title>Educio</title>
+  <title>Class Information</title>
   <link rel="stylesheet" href="/class_information.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -23,28 +23,27 @@
         <input type="text" id="className" class="form-control" placeholder="Geometry" name="className" required autofocus><br>
       </form>
     </div>
-
-    <div id="classDates">
-      <label for="classDates">Class Dates: </label>
-      <label class="checkbox-inline"><input type="checkbox" value="">M</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">T</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">W</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">Th</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">F</label>
-    </div><br>
-
-    <div id="classTime">
-      <label for="className">Class Time: </label>
-      
-      <div class="input-group bootstrap-timepicker timepicker">
-              <input id="timepicker1" type="text" class="form-control input-small">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-          </div>
-   
-          <script type="text/javascript">
-              $('#timepicker1').timepicker();
-          </script>
+      <div id="classDates">
+        <label for="classDates">Class Dates: </label>
+        <label class="checkbox-inline"><input type="checkbox" value="">M</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">T</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">W</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">Th</label>
+        <label class="checkbox-inline"><input type="checkbox" value="">F</label>
       </div><br>
+
+      <div id="classTime">
+        <label for="className">Class Time: </label>
+        
+        <div class="input-group bootstrap-timepicker timepicker" style="width:25%">
+                <input id="timepicker1" type="text" class="form-control input-small">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+     
+            <script type="text/javascript">
+                $('#timepicker1').timepicker();
+            </script>
+        </div><br>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
   </form>
