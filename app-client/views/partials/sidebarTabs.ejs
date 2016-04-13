@@ -1,7 +1,7 @@
 <html ng-app="educioModule">
 <head>
   <title>Educio</title>
-  <link rel="stylesheet" href="/class_information.css" />
+  <link rel="stylesheet" href="/sideBarTabs.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
@@ -10,18 +10,13 @@
   <script type="text/javascript" src="/angularjs-module.js"></script>
 </head>
 <body>
-
-<%- include partials/header.ejs %>
-<%- include partials/sidebarTabs.ejs %>
-
-<div id="main-content">
-	<!-- TODO: The circular shape navigation must be implemented. -->
-	<div id="classInfo">
-		<p id="className">Class Name:<input type="text" name="attendance" value="Class Name"></p>
-		<p id="time">Class Time:<input type="text" name="attendance" value="Date and Time"></p>
-	</div>
-	<ng-view></ng-view>
-</div>
-
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand" style="color: white;"><h1>Geometry</h1></li>
+            <li><a href="/class/1/attendance_and_gradebook">Attendance and Gradebook</a></li>
+            <li><a href="/class/1/agenda">Agenda</a></li>
+            <li><a href="/class/1/assignments">Assignments</a></li>
+            <li><a href="/class/1/class_information">Course Information</a></li>
+        </ul>
+    </div>
 </body>
-</html>
