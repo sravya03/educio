@@ -15,7 +15,7 @@ $(document).ready(function() {
 		m11: 'December'
 	};
 
-	function setTodaysDate() {
+	function setTodaysMonth() {
 		var todaysDate = new Date();
 		var todaysMonth = monthNames['m'+todaysDate.getMonth()];
 		jQuery('#today-date').text(todaysMonth);
@@ -32,5 +32,5 @@ $(document).ready(function() {
 	};
 
 	attachCalCellHandlers();
-	setTodaysDate();
+	setTodaysMonth();
 });
