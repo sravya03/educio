@@ -97,7 +97,9 @@ module.exports = function(app, passport) {
     })
 
     app.get('/class/:id/assignments', isLoggedIn, function(req, res) {
-        res.render('assignments.ejs');
+        res.render('assignments.ejs', {
+            teacher : req.user
+        });
     });
 };
 
