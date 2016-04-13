@@ -64,7 +64,9 @@ module.exports = function(app, passport) {
     });
 
     app.get('/newclass', isLoggedIn, function(req, res) {
-        res.render('new_class.ejs', {message: req.flash('newClassMessage') });
+        res.render('new_class.ejs', {
+            teacher : req.user
+        });
     });
 
     app.post('/newclass', isLoggedIn, function(req, res) {
@@ -88,7 +90,9 @@ module.exports = function(app, passport) {
 
 
     app.get('/class/:id/class_information', isLoggedIn, function(req, res) {
-        res.render('class_information.ejs');
+        res.render('class_information.ejs', {
+            teacher : req.user
+        });
     });
 
     app.get('/class/:id/agenda', isLoggedIn, function(req, res) {
@@ -102,7 +106,9 @@ module.exports = function(app, passport) {
     })
 
     app.get('/class/:id/assignments', isLoggedIn, function(req, res) {
-        res.render('assignments.ejs');
+        res.render('assignments.ejs', {
+            teacher : req.user
+        });
     });
 };
 
