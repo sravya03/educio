@@ -1,8 +1,14 @@
 #att_grades {
     position: absolute;
-    top: 60%;
-    left: 40%;
-    margin: -100px 0 0 -100px;
+    top: 40%;
+    left: 30%;
+    margin: -50px 0 0 -50px;
+    width: 50%;
+}
+
+#currentDate {
+	font-size: 36px;
+	text-align: center;
 }
 
 #present {

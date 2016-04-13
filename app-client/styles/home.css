@@ -1,6 +1,21 @@
 #classes {
     position: absolute;
-    top: 60%;
-    left: 50%;
-    margin: -100px 0 0 -100px;
+    top: 50%;
+    left: 30%;
+    margin: -10 0 0 -10;
+}
+
+#circleCanvas {
+    position: absolute;
+    top: 5%;
+    left: 20%;
+    margin: -10 0 0 -10;
+}
+
+#classes a {
+	color: white;
+}
+
+#classes button {
+	width: 50%;
 }

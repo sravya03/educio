@@ -48,16 +48,6 @@ module.exports = function(app, passport) {
     });
 
     app.get('/class/:id', isLoggedIn, function(req, res, next) {
-        // Class.findOne({ 'teacher' : req.user._id, '_id' : req.params.id }, function(err, classObj) {
-        //     if (classObj) {
-        //         res.render('class_view', {
-        //             classObj: classObj
-        //         });
-        //     } else {
-        //         req.flash('classAccessPermission', 'Sorry, you do not teach this class.');
-        //         res.redirect('/home');
-        //     }
-        // });
         res.render('class_view.ejs', {
             teacher : req.user,
             classObj: mockClassDataObj
@@ -96,6 +86,14 @@ module.exports = function(app, passport) {
         res.render('agenda.ejs', {
             teacher : req.user
         });
+    });
+
+    app.get('/bootstrap-calendar/tmpls/:fileName', isLoggedIn, function(req, res) {
+        res.render('/bootstrap-calendar/tmpls/' + req.fileName);
+    })
+
+    app.get('/class/:id/assignments', isLoggedIn, function(req, res) {
+        res.render('assignments.ejs');
     });
 };
 
