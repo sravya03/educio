@@ -39,6 +39,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
 // Store all html files in views folder
+app.use(express.static(__dirname + '/app-client/third_party'));
 app.use(express.static(__dirname + '/app-client/views'));
 app.use(express.static(__dirname + '/app-client/styles'));
 app.use(express.static(__dirname + '/app-client/views/partials'));

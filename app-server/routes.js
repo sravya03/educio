@@ -91,6 +91,12 @@ module.exports = function(app, passport) {
     app.get('/class/:id/class_information', isLoggedIn, function(req, res) {
         res.render('class_information.ejs');
     });
+
+    app.get('/class/:id/agenda', isLoggedIn, function(req, res) {
+        res.render('agenda.ejs', {
+            teacher : req.user
+        });
+    });
 };
 
 /**
