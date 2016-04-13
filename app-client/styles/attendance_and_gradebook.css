@@ -6,11 +6,6 @@
     width: 50%;
 }
 
-#currentDate {
-	font-size: 36px;
-	text-align: center;
-}
-
 #present {
 	color: green;
 }
