@@ -1,4 +1,4 @@
-<html ng-app="educioModule">
+<html>
 <head>
   <title>Educio</title>
   <link rel="stylesheet" href="/home.css" />
@@ -8,7 +8,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
-  <script type="text/javascript" src="/angularjs-module.js"></script>
 </head>
 <body>
 
@@ -18,19 +17,6 @@
 </div>
 
 <div id="main-content">
-	<% classes.forEach(function(classObj) { %>
-	  <a href="/class/<%= classObj._id %>"><%= classObj.name %></a>
-	<% }) %>
-<!-- 	<canvas id="circleCanvas" width="800" height="800" style="border:1px solid #d3d3d3;"></canvas> -->
-
-<!-- 	<div id="classes">
-		<div class="btn-group">
-			<button type="button" class="btn btn-primary btn-lg" style="font-size:60px;"><a href="class/1">English</a></button>
-			<button type="button" class="btn btn-primary btn-lg" style="font-size:60px;"><a href="class/1">Geometry</a></button><br>
-			<button type="button" class="btn btn-primary btn-lg" style="font-size:60px;"><a href="class/1">Calculus I</a></button>
-			<button type="button" class="btn btn-primary btn-lg" style="font-size:60px;"><a href="class/1">Algebra</a></button>
-		</div>
-	</div> -->
 </div>
 
 </body>
