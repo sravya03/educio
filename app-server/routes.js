@@ -81,7 +81,9 @@ module.exports = function(app, passport) {
 
 
     app.get('/class/:id/class_information', isLoggedIn, function(req, res) {
-        res.render('class_information.ejs');
+        res.render('class_information.ejs', {
+            teacher : req.user
+        });
     });
 
     app.get('/class/:id/agenda', isLoggedIn, function(req, res) {

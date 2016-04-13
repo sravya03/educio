@@ -33,6 +33,18 @@
       <label class="checkbox-inline"><input type="checkbox" value="">F</label>
     </div><br>
 
+    <div id="classTime">
+      <label for="className">Class Time: </label>
+      
+      <div class="input-group bootstrap-timepicker timepicker">
+              <input id="timepicker1" type="text" class="form-control input-small">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+          </div>
+   
+          <script type="text/javascript">
+              $('#timepicker1').timepicker();
+          </script>
+      </div><br>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
   </form>
