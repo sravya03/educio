@@ -1,0 +1,101 @@
+<html ng-app="educioModule">
+<head>
+  <title>Class Agenda Notes</title>
+  <link rel="stylesheet" href="/class_agenda_notes.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
+  <script type="text/javascript" src="/angularjs-module.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+</head>
+<body>
+
+<%- include partials/sidebarTabs.ejs %>
+
+<div id="main-content">
+  	<div id="agendaNotes">
+	    <div id="top-functions">
+	      <button type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;"><span class="glyphicon glyphicon-minus"></span></button>
+
+	      <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal" style="border-radius: 50%; float:right; font-size:24px;"><span class="glyphicon glyphicon-plus"></span></button>
+
+	      <!-- W3Schools Example -->
+	      <!-- Modal -->
+	      	<div class="modal fade" id="myModal" role="dialog">
+		        <div class="modal-dialog">
+		        
+		          <!-- Modal content-->
+		          	<div class="modal-content">
+			            <div class="modal-header">
+			              	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			              	<h1 class="form-signin-heading" style="text-align:center;">Agenda</h1>
+			              	<h3 id="form-signin-heading" style="text-align:center;">Date</h3>
+			            </div>
+			            <div class="modal-body">
+			              	<form id="addAssignment-form" action="/" method="post">
+				                <label for="assignmentName" class="sr-only">Agenda Item: </label>
+				                <input type="text" id="assignmentName" class="form-control" name="assignmentName" placeholder="Assignment Name" name="assignmentName" required autofocus><br>
+
+				                <span class="btn btn-default btn-file">
+									Browse <input type="file" id="files" name="files[]" multiple />
+								</span>
+								<output id="list"></output>
+
+								<script>
+								  	function handleFileSelect(evt) {
+								    	var files = evt.target.files; // FileList object
+
+								    	// files is a FileList of File objects. List some properties.
+								    	var output = [];
+								    	for (var i = 0, f; f = files[i]; i++) {
+								      		output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+								                  f.size, ' bytes, last modified: ',
+								                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+								                  '</li>');
+								    	}
+								    	document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+								  	}
+
+								  	document.getElementById('files').addEventListener('change', handleFileSelect, false);
+								</script>
+
+
+
+				                <label for="notes" class="sr-only">Notes: </label>
+				                <input type="text" id="notes" class="form-control" name="notes" placeholder="Notes" name="notes" required autofocus><br>
+			               	</form>
+			           	</div>
+
+		            <div class="modal-footer">
+		              	<button class="btn btn-lg btn-primary btn-block" type="submit" data-dismiss="modal">Add Agenda Item</button>
+		            </div>
+		      	</div>
+	    	</div>
+		</div>
+
+    	<h2 id="form-signin-heading" style="text-align: center;">Agenda Items</h2>
+    	<h3 id="form-signin-heading" style="text-align: center;">Date</h3>
+
+	    <table class="table table-hover" style="text-align:center;">
+	      <tr>
+	        <td id="name">Notes</td>
+	        <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
+	      </tr>
+	    </table>
+  	</div>
+<ng-view></ng-view>
+</div>
+
+</body>
+</html>
