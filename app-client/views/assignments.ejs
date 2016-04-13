@@ -8,16 +8,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
   <script type="text/javascript" src="/angularjs-module.js"></script>
-
-
-
-
-
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 </head>
 <body>
@@ -31,8 +29,58 @@
   <!-- TODO: The circular shape navigation must be implemented. -->
 
     <div id="top-functions">
-      <button type="button" class="btn btn-danger btn-md" style="border-radius: 50%;"><span class="glyphicon glyphicon-minus"></span></button>
-      <button type="button" class="btn btn-success btn-md" style="border-radius: 50%; float:right;"><span class="glyphicon glyphicon-plus"></span></button>
+      <button type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;"><span class="glyphicon glyphicon-minus"></span></button>
+
+      <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal" style="border-radius: 50%; float:right; font-size:24px;"><span class="glyphicon glyphicon-plus"></span></button>
+
+      <!-- W3Schools Example -->
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Add Assignment</h4>
+            </div>
+            <div class="modal-body">
+              <p id="assignmentName">Assignment Name: <input type="text" name="assignmentName"></p>
+              <p id="totalPoints">Total Points: <input type="text" name="totalPoints"></p>
+              <table class="table table-hover">
+                <tr>
+                  <th>Student</th>
+                  <th>Points Earned</th>
+                </tr>
+                <tr>
+                  <td id="name">Sally Brown</td>
+                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
+                </tr>
+                <tr>
+                  <td id="name">Sam Smith</td>
+                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
+                </tr>
+                <tr>
+                  <td id="name">Allie Baker</td>
+                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
+                </tr>
+                <tr>
+                  <td id="name">Jon Farmer</td>
+                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
+                </tr>
+            </table>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Add Assignment</button>
+            </div>
+          </div>
+          
+        </div>
+  
+</div>
+
+
     </div>
 
     <h4 style="text-align: center;">Assignments</h4>
