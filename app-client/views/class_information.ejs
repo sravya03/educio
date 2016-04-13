@@ -14,13 +14,28 @@
 
 <%- include partials/sidebarTabs.ejs %>
 
-<div id="main-content">
-  <form id="courseInfo-form" action="/" method="post">
-          <h2 id="form-signin-heading">Class Information</h2>
-          <label for="className">Class Name: </label>
-          <input type="text" id="className" class="form-control" placeholder="Geometry" name="className" required autofocus><br>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
-        </form>
+  <div id="main-content">
+
+    <div id="className">
+      <form id="courseInfo-form" action="/" method="post">
+        <h2 id="form-signin-heading">Class Information</h2>
+        <label for="className">Class Name: </label>
+        <input type="text" id="className" class="form-control" placeholder="Geometry" name="className" required autofocus><br>
+      </form>
+    </div>
+
+    <div id="classDates">
+      <label for="classDates">Class Dates: </label>
+      <label class="checkbox-inline"><input type="checkbox" value="">M</label>
+      <label class="checkbox-inline"><input type="checkbox" value="">T</label>
+      <label class="checkbox-inline"><input type="checkbox" value="">W</label>
+      <label class="checkbox-inline"><input type="checkbox" value="">Th</label>
+      <label class="checkbox-inline"><input type="checkbox" value="">F</label>
+    </div><br>
+
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+  </form>
 	<ng-view></ng-view>
 </div>
 

@@ -55,7 +55,9 @@ module.exports = function(app, passport) {
     });
 
     app.get('/newclass', isLoggedIn, function(req, res) {
-        res.render('new_class.ejs', {message: req.flash('newClassMessage') });
+        res.render('new_class.ejs', {
+            teacher : req.user
+        });
     });
 
     app.post('/newclass', isLoggedIn, function(req, res) {
