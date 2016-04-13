@@ -16,12 +16,9 @@ $(document).ready(function() {
 	};
 
 	function setTodaysDate() {
-		var todaysCell = jQuery('.cal-day-today');
-		var todaysDate = new Date(jQuery('[data-cal-date]', todaysCell).data('cal-date'));
-		var todaysYear = todaysDate.getFullYear();
+		var todaysDate = new Date();
 		var todaysMonth = monthNames['m'+todaysDate.getMonth()];
-		var todaysDay = todaysDate.getDay();
-		jQuery('#today-date').text(todaysMonth + " " + todaysDay + ", " + todaysYear);
+		jQuery('#today-date').text(todaysMonth);
 	};
 
 	function attachCalCellHandlers() {

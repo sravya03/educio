@@ -15,41 +15,42 @@
 <%- include partials/sidebarTabs.ejs %>
 
 <div id="main-content">
-	<div id="att_grades">
-	<div id="currentDate">Date</div>
-	<h4 style="text-align:center;">Attendance: <span id="present">P - Present</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="absent">A - Absent</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="tardy">T - Tardy</span></h4>
-		<table class="table table-hover">
-			<tr>
-				<th>Student</th>
-				<th>Attendance</th>
-				<th>Grade</th>
-				<th></th>
-			</tr>
-			<tr>
-			    <td id="name">Sally Brown</td>
-			    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
-			    <td id="grade">A-</td>
-			    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-		  	</tr>
-		  	<tr>
-			    <td id="name">Sam Smith</td>
-			    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
-			    <td id="grade">B</td>
-			    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-		  	</tr>
-		  	<tr>
-			    <td id="name">Allie Baker</td>
-			    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
-			    <td id="grade">A+</td>
-			    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-		  	</tr>
-		  	<tr>
-			    <td id="name">Jon Farmer</td>
-			    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
-			    <td id="grade">C</td>
-			    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-		  	</tr>
-		</table>
+	<div id="att_grades">	
+		<h2 id="form-signin-heading" style="text-align:center;">Attendance and Gradebook</h2><br>
+		<h3 id="form-signin-heading" style="text-align:center;">Date</h3>
+		<h4 style="text-align:center;">Attendance: <span id="present">P - Present</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="absent">A - Absent</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="tardy">T - Tardy</span></h4>
+			<table class="table table-hover">
+				<tr>
+					<th>Student</th>
+					<th>Attendance</th>
+					<th>Grade</th>
+					<th></th>
+				</tr>
+				<tr>
+				    <td id="name">Sally Brown</td>
+				    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
+				    <td id="grade">A-</td>
+				    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
+			  	</tr>
+			  	<tr>
+				    <td id="name">Sam Smith</td>
+				    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
+				    <td id="grade">B</td>
+				    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
+			  	</tr>
+			  	<tr>
+				    <td id="name">Allie Baker</td>
+				    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
+				    <td id="grade">A+</td>
+				    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
+			  	</tr>
+			  	<tr>
+				    <td id="name">Jon Farmer</td>
+				    <td id="attendance"><input type="text" name="attendance" value="P" style="width:24px;"></td>
+				    <td id="grade">C</td>
+				    <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
+			  	</tr>
+			</table>
 	</div>
 	<ng-view></ng-view>
 </div>
