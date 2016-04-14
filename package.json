@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Education Management Platform for Teachers",
   "main": "server.js",
+  "engines": { "node": "4.4.2"},
   "scripts": {
     "start": "node server.js"
   },
