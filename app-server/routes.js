@@ -30,15 +30,8 @@ module.exports = function(app, passport) {
     }));
 
     app.get('/home', isLoggedIn, function(req, res) {
-        req.user.getClasses(function(err, classes) {
-            if (err) {
-                return;
-            }
-            res.render('home.ejs', {
-                teacher : req.user,
-                classes : classes,
-                message : req.flash('classAccessPermission')
-            })
+        res.render('home.ejs', {
+            teacher : req.user
         });
     });
 
