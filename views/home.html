@@ -1,0 +1,80 @@
+<html>
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="../styles/home.css" />
+  <link rel="stylesheet" href="../styles/sidebarClasses.css" />
+  <link rel="stylesheet" href="../styles/new_class.css" />
+  <link rel="stylesheet" href="../third_party/jonthornton-jquery-timepicker/jquery.timepicker.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="../third_party/jonthornton-jquery-timepicker/jquery.timepicker.js"></script>
+  <script src="../js/usersname_setter.js"></script>
+  <script src="../js/verify_loggedIn.js"></script>
+</head>
+<body>
+
+<div id="header">
+	<!-- Is there any way to move this back out into a template -->
+	<div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li style="color: white;">
+                <div class="sidebar-brand"><h1>Educio</h1></div>
+                <h4><i id="usersname"></i></h4>
+            </li>
+            <br><br>
+            <li><a href="class_view.html">English</a></li>
+            <li><a href="class_view.html">Geometry</a></li>
+            <li><a href="class_view.html">Calculus I</a></li>
+            <li><a href="class_view.html">Algebra</a></li>
+            <li><a href="logout.html"><span class="imagePadding glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="main-content">
+	<div id="newClass" class="row">
+		<h2 id="form-signin-heading" style="text-align:center;">Add Class</h2><br>
+
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label for="className" class="col-lg-3 control-label">Class Name:</label>
+		    <div class="col-lg-14">
+		    	<input type="text" id="className" class="form-control" name="className" required autofocus>
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		  	<label for="classDates" class="col-lg-3 control-label">Class Dates:</label>
+		  	<div class="col-lg-14">
+		  		<label class="checkbox-inline"><input type="checkbox" value="M">M</label>
+				<label class="checkbox-inline"><input type="checkbox" value="T">T</label>
+				<label class="checkbox-inline"><input type="checkbox" value="W">W</label>
+				<label class="checkbox-inline"><input type="checkbox" value="Th">Th</label>
+				<label class="checkbox-inline"><input type="checkbox" value="F">F</label>
+		  	</div>
+		  </div>
+
+		  <div class="form-group">
+		  	<label for="classTime" class="col-lg-3 control-label">Class Time:</label>
+		    <div class="col-lg-14">
+		    	<div style="width: 25%;" class="input-group bootstrap-timepicker timepicker">
+	            	<input type="text" id="timepicker1" class="form-control input-small">
+	            	<span id="timer-icon" class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+	        	</div>
+
+	        	<script type="text/javascript">
+		            var timepickerObj = jQuery('#timepicker1').timepicker();
+		            jQuery('#timer-icon').click(function() {
+		            	jQuery('#timepicker1').trigger('click');
+		            });
+		        </script>
+		    </div>
+		  </div>
+    	  <button class="btn btn-lg btn-primary btn-block" type="submit">Add Class</button>
+    	</form>
+	</div>
+</div>
+
+</body>
+</html>
