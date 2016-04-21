@@ -9,3 +9,4 @@ var users = {};
 users[user.email] = user;
 
 localStorage.setItem('users', JSON.stringify(users));
+localStorage.setItem('extraClasses', JSON.stringify([]));

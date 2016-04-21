@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../js/usersname_setter.js"></script>
   <script src="../js/verify_loggedIn.js"></script>
+  <script src="../js/assignments.js"></script>
 </head>
 <body>
 
@@ -131,7 +132,7 @@
 
     </div>
 
-    <div class="modal fade" id="delete-one" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             
@@ -147,29 +148,16 @@
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a id="deleteOneClick" class="btn btn-danger btn-ok">Delete</a>
+                    <a id="deleteRowConfirmationBtn" class="btn btn-danger btn-ok">Delete</a>
                 </div>
             </div>
         </div>
-      </div>    
-      <script>
-          $('#delete-one').on('show.bs.modal', function(e) {
-              $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-          });
-      </script>
-
-      <script>
-        document.getElementById("deleteOneClick").addEventListener("click", function(){
-            $("tr").remove();
-            $("#delete-one").modal('hide');
-        });
-      </script>
-
+      </div>
 
     <h2 id="form-signin-heading" style="text-align: center;">Assignments</h2>
     <table id="assignmentTable" class="table table-hover">
       <tr id="row-1">
-        <td><a id="1" href="#" data-toggle="modal" data-target="#delete-one"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>
+        <td><a id="1" href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="1"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>
         <td id="name" style="text-align: center;">Triangle Homework</td>
         <td><button id="expand-1" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
       </tr>
@@ -221,7 +209,7 @@
           </tr>
 
       <tr id="row-2">        
-        <td><a id="2" href="#" data-toggle="modal" data-target="#delete-one"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
+        <td><a id="2" href="#" data-toggle="modal" data-target="#deleteRowModal"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
         <td id="name" style="text-align: center;">Factorization</td>
         <td><button id="expand-2" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
       </tr>
@@ -273,7 +261,7 @@
           </tr>
 
       <tr id="row-3">
-        <td><a id="3" href="#" data-toggle="modal" data-target="#delete-one"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
+        <td><a id="3" href="#" data-toggle="modal" data-target="#deleteRowModal"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
         <td id="name" style="text-align: center;">Multiplication</td>
         <td><button id="expand-3" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
       </tr>
@@ -325,7 +313,7 @@
           </tr>
 
       <tr id="row-4">
-        <td><a id="4" href="#" data-toggle="modal" data-target="#delete-one"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
+        <td><a id="4" href="#" data-toggle="modal" data-target="#deleteRowModal"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
         <td id="name" style="text-align: center;">Exam One</td>
         <td><button id="expand-4" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
       </tr>
