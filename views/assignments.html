@@ -35,7 +35,43 @@
 <div id="main-content">
   <div id="assignments">
     <div id="top-functions">
-      <button type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;"><span class="glyphicon glyphicon-minus"></span></button>
+
+      <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>You are about to delete <span style="font-weight: bold">all</span> assignments.</p>
+                    <p>Do you want to proceed?</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a id="deleteClick" class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <a href="#" data-toggle="modal" data-target="#confirm-delete"><button id="deleteAll" type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;"><span class="glyphicon glyphicon-minus"></span></button></a>
+    
+      <script>
+          $('#confirm-delete').on('show.bs.modal', function(e) {
+              $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+          });
+      </script>
+
+      <script>
+        document.getElementById("deleteClick").addEventListener("click", function(){
+            $("#assignmentTable tr").remove();
+            $("#confirm-delete").modal('hide');
+        });
+      </script>
 
       <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal" style="border-radius: 50%; float:right; font-size:24px;"><span class="glyphicon glyphicon-plus"></span></button>
 
@@ -96,7 +132,7 @@
     </div>
 
     <h2 id="form-signin-heading" style="text-align: center;">Assignments</h2>
-    <table class="table table-hover">
+    <table id="assignmentTable" class="table table-hover">
       <tr>
         <td id="name">Triangle Homework</td>
         <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
