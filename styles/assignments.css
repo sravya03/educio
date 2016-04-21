@@ -13,3 +13,7 @@
 #delete .glyphicon{
 	font-size: 20px;
 }
+
+.glyphicon span{
+	text-align: center;
+}
