@@ -19,3 +19,7 @@
 #classes button {
 	width: 50%;
 }
+
+.ui-timepicker-wrapper {
+    width: 10% !important;
+} 
