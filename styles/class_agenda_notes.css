@@ -1,3 +1,7 @@
+#delete .glyphicon{
+    font-size: 20px;
+}
+
 #agendaNotes {
     position: absolute;
     top: 40%;
