@@ -10,6 +10,7 @@
   <script src="../js/usersname_setter.js"></script>
   <script src="../js/verify_loggedIn.js"></script>
   <script src="../js/selectedDate_setter.js"></script>
+  <script src="../js/class_agenda_notes.js"></script>
 </head>
 <body>
 
@@ -59,43 +60,38 @@
 		        </div>
 	      	</div>
 
-  			<a href="#" data-toggle="modal" data-target="#confirm-delete"><button id="deleteAll" type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;"><span class="glyphicon glyphicon-minus"></span></button></a>
-    
-	      	<script>
-	          	$('#confirm-delete').on('show.bs.modal', function(e) {
-	              $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-	          	});
-	      	</script>
+  			<a href="#" data-toggle="modal" data-target="#confirm-delete">
+  				<button id="deleteAll" type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;">
+  					<span class="glyphicon glyphicon-minus"></span>
+  				</button>
+  			</a>
 
-	      	<script>
-		        document.getElementById("deleteClick").addEventListener("click", function(){
-		            $("#agendaTable tr").remove();
-		            $("#confirm-delete").modal('hide');
-		        });
-	      	</script>
+  			<a href="#" data-toggle="modal" data-target="#addNoteModal">
+  				<button type="button" class="btn btn-success btn-md" style="border-radius: 50%; float:right; font-size:24px;">
+  					<span class="glyphicon glyphicon-plus"></span>
+  				</button>
+  			</a>
 
-      		<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal" style="border-radius: 50%; float:right; font-size:24px;"><span class="glyphicon glyphicon-plus"></span></button>
-
-	      <!-- W3Schools Example -->
-	      <!-- Modal -->
-	      	<div class="modal fade" id="myModal" role="dialog">
+	      	<!-- ######################## -->
+	        <!-- #### Add Note Modal #### -->
+	        <!-- ######################## -->
+	      	<div class="modal fade" id="addNoteModal" role="dialog">
 		        <div class="modal-dialog">
 		        
-		          <!-- Modal content-->
 		          	<div class="modal-content">
 			            <div class="modal-header">
 			              	<button type="button" class="close" data-dismiss="modal">&times;</button>
 			              	<h1 class="form-signin-heading" style="text-align:center;">Agenda Item</h1>
 			            </div>
 			            <div class="modal-body">
-			              	<form id="addAssignment-form" action="/" method="post">
-				                <label for="assignmentName" class="sr-only">Agenda Item: </label>
-				                <input type="text" id="assignmentName" class="form-control" name="assignmentName" placeholder="Assignment Name" name="assignmentName" required autofocus><br>
+			              	<form id="addAgendaNoteForm">
+				                <label for="agendaNoteName" class="sr-only">Agenda Item: </label>
+				                <input type="text" id="agendaNoteName" class="form-control" name="assignmentName" placeholder="Assignment Name" required autofocus><br>
 
 				                <span class="btn btn-default btn-file">
 									Browse <input type="file" id="files" name="files[]" multiple />
 								</span>
-								<output id="list"></output>
+								<output id="addAgendaDocList"></output>
 
 								<script>
 								  	function handleFileSelect(evt) {
@@ -109,7 +105,7 @@
 								                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
 								                  '</li>');
 								    	}
-								    	document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+								    	document.getElementById('addAgendaDocList').innerHTML = '<ul>' + output.join('') + '</ul>';
 								  	}
 
 								  	document.getElementById('files').addEventListener('change', handleFileSelect, false);
@@ -118,62 +114,69 @@
 
 
 				                <label for="notes" class="sr-only">Notes: </label>
-				                <textarea rows="4" cols="50" placeholder="Notes"></textarea><br>
+				                <textarea id="notesTextArea" rows="4" cols="50" placeholder="Notes"></textarea><br>
+				                <button id="hiddenAddAgendaItemBtn" type="submit" style="display: none"></button>
 			               	</form>
 			           	</div>
 
-		            <div class="modal-footer">
-		              	<button class="btn btn-lg btn-primary btn-block" type="submit" data-dismiss="modal">Add Agenda Item</button>
-		            </div>
-		      	</div>
-	    	</div>
-		</div>
+			            <div class="modal-footer">
+			              	<button id="addAgendaNoteBtn" class="btn btn-lg btn-primary btn-block" type="submit">Add Agenda Item</button>
+			            </div>
+			      	</div>
+		    	</div>
+			</div>
 
-	    <div class="modal fade" id="delete-one" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        	<div class="modal-dialog">
-            	<div class="modal-content">
-            
-                	<div class="modal-header">
-                    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    	<h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
-                	</div>
-            
-	                <div class="modal-body">
-	                    <p>You are about to delete this assignment.</p>
-	                    <p>Do you want to proceed?</p>
-	                </div>
-	                
-	                <div class="modal-footer">
-	                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	                    <a id="deleteOneClick" class="btn btn-danger btn-ok">Delete</a>
-	                </div>
-            	</div>
-        	</div>
-      </div>    
-      <script>
-          $('#delete-one').on('show.bs.modal', function(e) {
-              $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-          });
-      </script>
+		    <!-- ################################# -->
+		    <!-- #### Delete Assignment Modal #### -->
+		    <!-- ################################# -->
+		    <div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
 
-      <script>
-        document.getElementById("deleteOneClick").addEventListener("click", function(){
-            $("tr").remove();
-            $("#delete-one").modal('hide');
-        });
-      </script>
+		          <div class="modal-header">
+		              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		              <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+		          </div>
+		      
+		          <div class="modal-body">
+		              <p>You are about to delete this note.</p>
+		              <p>Do you want to proceed?</p>
+		          </div>
+		          
+		          <div class="modal-footer">
+		              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		              <a id="deleteRowConfirmationBtn" class="btn btn-danger btn-ok">Delete</a>
+		          </div>
 
-    	<h2 id="form-signin-heading" style="text-align: center;">Agenda Items</h2>
-    	<h3 id="selectedDate" style="text-align: center;"></h3>
+		        </div>
+		      </div>
+		    </div>
 
-	    <table id="agendaTable" class="table table-hover" style="text-align:center;">
-	      <tr>
-			<td id="delete"><a href="#" data-toggle="modal" data-target="#delete-one"><button id="deleteOne" type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>	        <td id="name">Notes</td>
-	        <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-	      </tr>
-	    </table>
+	    	<h2 id="form-signin-heading" style="text-align: center;">Agenda Items</h2>
+	    	<h3 id="selectedDate" style="text-align: center;"></h3>
+
+		    <table id="agendNotesTable" class="table table-hover" style="text-align:center;">
+		      <tr id="row-1">
+				<td class="delete">
+					<a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="1">
+						<button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;">
+							<span class="glyphicon glyphicon-minus"></span>
+						</button>
+					</a>
+				</td>
+				<td id="name">
+					Notes
+				</td>
+		        <td>
+		        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;">
+		        		<span class="caret"></span>
+		        	</button>
+		        </td>
+		      </tr>
+		    </table>
+
+  		</div>
   	</div>
-<ng-view></ng-view>
 </div>
 
 </body>

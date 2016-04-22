@@ -37,122 +37,117 @@
   <div id="assignments">
     <div id="top-functions">
 
-      <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <!-- ############################## -->
+      <!-- #### Add Assignment Modal #### -->
+      <!-- ############################## -->
+      <div class="modal fade" id="addAssignmentModal" role="dialog">
         <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
-                </div>
-            
-                <div class="modal-body">
-                    <p>You are about to delete <span style="font-weight: bold">all</span> assignments.</p>
-                    <p>Do you want to proceed?</p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a id="deleteClick" class="btn btn-danger btn-ok">Delete</a>
-                </div>
-            </div>
-        </div>
-      </div>
-
-      <a href="#" data-toggle="modal" data-target="#confirm-delete"><button id="deleteAll" type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;"><span class="glyphicon glyphicon-minus"></span></button></a>
-    
-      <script>
-          $('#confirm-delete').on('show.bs.modal', function(e) {
-              $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-          });
-      </script>
-
-      <script>
-        document.getElementById("deleteClick").addEventListener("click", function(){
-            $("#assignmentTable tr").remove();
-            $("#confirm-delete").modal('hide');
-        });
-      </script>
-
-      <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal" style="border-radius: 50%; float:right; font-size:24px;"><span class="glyphicon glyphicon-plus"></span></button>
-
-      <!-- W3Schools Example -->
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-        
-          <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h2 class="form-signin-heading" style="text-align:center;">Add Assignment</h2>
             </div>
             <div class="modal-body">
-              <form id="addAssignment-form" action="/" method="post">
+              <form id="addAssignment-form">
                 <label for="assignmentName" class="sr-only">Assignment Name: </label>
                 <input type="text" id="assignmentName" class="form-control" name="assignmentName" placeholder="Assignment Name" name="assignmentName" required autofocus><br>
 
                 <label for="totalPoints" class="sr-only">Total Points: </label>
                 <input type="text" id="totalPoints" class="form-control" name="totalPoints" placeholder="Total Points" name="totalPoints" required autofocus><br>
                         
-              <table class="table table-hover">
-                <tr>
-                  <th>Student</th>
-                  <th>Points Earned</th>
-                </tr>
-                <tr>
-                  <td id="name">Sally Brown</td>
-                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
-                </tr>
-                <tr>
-                  <td id="name">Sam Smith</td>
-                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
-                </tr>
-                <tr>
-                  <td id="name">Allie Baker</td>
-                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
-                </tr>
-                <tr>
-                  <td id="name">Jon Farmer</td>
-                  <td id="pointsEarned"><input type="text" name="pointsEarned"></td>
-                </tr>
-            </table>
-
+                <table class="table table-hover">
+                  <tr>
+                    <th>Student</th>
+                    <th>Points Earned</th>
+                  </tr>
+                  <tr>
+                    <td>Sally Brown</td>
+                    <td><input id="sallyPointsEarned" type="text" name="pointsEarned"></td>
+                  </tr>
+                  <tr>
+                    <td id="name">Sam Smith</td>
+                    <td><input id="samPointsEarned" type="text" name="pointsEarned"></td>
+                  </tr>
+                  <tr>
+                    <td id="name">Allie Baker</td>
+                    <td><input id="alliePointsEarned" type="text" name="pointsEarned"></td>
+                  </tr>
+                  <tr>
+                    <td id="name">Jon Farmer</td>
+                    <td><input id="jonPointsEarned" type="text" name="pointsEarned"></td>
+                  </tr>
+                </table>
+              </form>
             </div>
-
             <div class="modal-footer">
-              <button class="btn btn-lg btn-primary btn-block" type="submit" data-dismiss="modal">Add Assignment</button>
+              <button id="addAssignmentBtn" class="btn btn-lg btn-primary btn-block" type="submit" data-dismiss="modal">Add Assignment</button>
             </div>
           </div>
-          
         </div>
-  
       </div>
-
-
     </div>
 
-    <div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
-                </div>
-            
-                <div class="modal-body">
-                    <p>You are about to delete this assignment.</p>
-                    <p>Do you want to proceed?</p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a id="deleteRowConfirmationBtn" class="btn btn-danger btn-ok">Delete</a>
-                </div>
-            </div>
+    <!-- ################################# -->
+    <!-- #### Delete Assignment Modal #### -->
+    <!-- ################################# -->
+    <div class="modal fade" id="deleteRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+          </div>
+      
+          <div class="modal-body">
+              <p>You are about to delete this assignment.</p>
+              <p>Do you want to proceed?</p>
+          </div>
+          
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <a id="deleteRowConfirmationBtn" class="btn btn-danger btn-ok">Delete</a>
+          </div>
+
         </div>
       </div>
+    </div>
+
+    <!-- ################################################### -->
+    <!-- #### Delete All Assignments Confirmation Modal #### -->
+    <!-- ################################################### -->
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+              </div>
+          
+              <div class="modal-body">
+                  <p>You are about to delete <span style="font-weight: bold">all</span> assignments.</p>
+                  <p>Do you want to proceed?</p>
+              </div>
+              
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <a id="deleteClick" class="btn btn-danger btn-ok">Delete</a>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <a href="#" data-toggle="modal" data-target="#confirm-delete">
+      <button id="deleteAll" type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;">
+        <span class="glyphicon glyphicon-minus"></span>
+      </button>
+    </a>
+  
+    <a href="#" data-toggle="modal" data-target="#addAssignmentModal">
+      <button type="button" class="btn btn-success btn-md" style="border-radius: 50%; float:right; font-size:24px;">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+    </a>
 
     <h2 id="form-signin-heading" style="text-align: center;">Assignments</h2>
     <table id="assignmentTable" class="table table-hover">
@@ -208,171 +203,170 @@
             </script>
           </tr>
 
-      <tr id="row-2">        
-        <td><a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="2"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
-        <td id="name" style="text-align: center;">Factorization</td>
-        <td><button id="expand-2" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-      </tr>
-            <tr id="expanded-2" style="display:none;">
-            <td colspan="4">
-              <table class="table table-hover">
-                <tr>
-                  <th>Student</th>
-                  <th>Grade</th>
-                  <th>Total Points</th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td id="student">Sally Brown</td>
-                  <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-                <tr>
-                  <td id="student">Sam Smith</td>
-                  <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-                <tr>
-                  <td id="student">Allie Baker</td>
-                  <td id="grade"><input type="text" name="grade" value="8" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-                <tr>
-                  <td id="student">Jon Farmer</td>
-                  <td id="grade"><input type="text" name="grade" value="5" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-              </table>
-            </td>
-            <script type="text/javascript">
-              jQuery( "#expand-2" ).click(function() {
-                var buttonElement = jQuery(this);
-                if (buttonElement.data("expanded") == 1) {
-                  jQuery( "#expanded-2" ).slideUp( "slow", function() {
-                    buttonElement.data("expanded", "0");
-                  });
-                } else {
-                  jQuery( "#expanded-2" ).slideDown( "slow", function() {
-                    buttonElement.data("expanded", "1");
-                  });
-                }
-            });
-            </script>
+          <tr id="row-2">        
+            <td><a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="2"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
+            <td id="name" style="text-align: center;">Factorization</td>
+            <td><button id="expand-2" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
           </tr>
-
-      <tr id="row-3">
-        <td><a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="1"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
-        <td id="name" style="text-align: center;">Multiplication</td>
-        <td><button id="expand-3" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-      </tr>
-            <tr id="expanded-3" style="display:none;">
-            <td colspan="4">
-              <table class="table table-hover">
-                <tr>
-                  <th>Student</th>
-                  <th>Grade</th>
-                  <th>Total Points</th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td id="student">Sally Brown</td>
-                  <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-                <tr>
-                  <td id="student">Sam Smith</td>
-                  <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-                <tr>
-                  <td id="student">Allie Baker</td>
-                  <td id="grade"><input type="text" name="grade" value="8" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-                <tr>
-                  <td id="student">Jon Farmer</td>
-                  <td id="grade"><input type="text" name="grade" value="5" style="width:25%;"></td>
-                  <td id="totalPoints">10</td>
-                </tr>
-              </table>
-            </td>
-            <script type="text/javascript">
-              jQuery( "#expand-3" ).click(function() {
-                var buttonElement = jQuery(this);
-                if (buttonElement.data("expanded") == 1) {
-                  jQuery( "#expanded-3" ).slideUp( "slow", function() {
-                    buttonElement.data("expanded", "0");
-                  });
-                } else {
-                  jQuery( "#expanded-3" ).slideDown( "slow", function() {
-                    buttonElement.data("expanded", "1");
-                  });
-                }
-            });
-            </script>
-          </tr>
-
-      <tr id="row-4">
-        <td><a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="1"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
-        <td id="name" style="text-align: center;">Exam One</td>
-        <td><button id="expand-4" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-      </tr>
-      <tr id="expanded-4" style="display:none;">
-            <td colspan="4">
-              <table class="table table-hover">
-                <tr>
-                  <th>Student</th>
-                  <th>Grade</th>
-                  <th>Total Points</th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td id="student">Sally Brown</td>
-                  <td id="grade"><input type="text" name="grade" value="95" style="width:25%;"></td>
-                  <td id="totalPoints">100</td>
-                </tr>
-                <tr>
-                  <td id="student">Sam Smith</td>
-                  <td id="grade"><input type="text" name="grade" value="90" style="width:25%;"></td>
-                  <td id="totalPoints">100</td>
-                </tr>
-                <tr>
-                  <td id="student">Allie Baker</td>
-                  <td id="grade"><input type="text" name="grade" value="80" style="width:25%;"></td>
-                  <td id="totalPoints">100</td>
-                </tr>
-                <tr>
-                  <td id="student">Jon Farmer</td>
-                  <td id="grade"><input type="text" name="grade" value="55" style="width:25%;"></td>
-                  <td id="totalPoints">100</td>
-                </tr>
-              </table>
-            </td>
-            <script type="text/javascript">
-              jQuery( "#expand-4" ).click(function() {
-                var buttonElement = jQuery(this);
-                if (buttonElement.data("expanded") == 1) {
-                  jQuery( "#expanded-4" ).slideUp( "slow", function() {
-                    buttonElement.data("expanded", "0");
-                  });
-                } else {
-                  jQuery( "#expanded-4" ).slideDown( "slow", function() {
-                    buttonElement.data("expanded", "1");
-                  });
-                }
-            });
-            </script>
-          </tr>
-
-          <script>
-            $( "#grade" ).change(function() {
-              alert( "Grade updated." );
-            });
+          <tr id="expanded-2" style="display:none;">
+          <td colspan="4">
+            <table class="table table-hover">
+              <tr>
+                <th>Student</th>
+                <th>Grade</th>
+                <th>Total Points</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td id="student">Sally Brown</td>
+                <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+              <tr>
+                <td id="student">Sam Smith</td>
+                <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+              <tr>
+                <td id="student">Allie Baker</td>
+                <td id="grade"><input type="text" name="grade" value="8" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+              <tr>
+                <td id="student">Jon Farmer</td>
+                <td id="grade"><input type="text" name="grade" value="5" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+            </table>
+          </td>
+          <script type="text/javascript">
+            jQuery( "#expand-2" ).click(function() {
+              var buttonElement = jQuery(this);
+              if (buttonElement.data("expanded") == 1) {
+                jQuery( "#expanded-2" ).slideUp( "slow", function() {
+                  buttonElement.data("expanded", "0");
+                });
+              } else {
+                jQuery( "#expanded-2" ).slideDown( "slow", function() {
+                  buttonElement.data("expanded", "1");
+                });
+              }
+          });
           </script>
+        </tr>
+
+        <tr id="row-3">
+          <td><a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="1"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
+          <td id="name" style="text-align: center;">Multiplication</td>
+          <td><button id="expand-3" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
+        </tr>
+          <tr id="expanded-3" style="display:none;">
+          <td colspan="4">
+            <table class="table table-hover">
+              <tr>
+                <th>Student</th>
+                <th>Grade</th>
+                <th>Total Points</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td id="student">Sally Brown</td>
+                <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+              <tr>
+                <td id="student">Sam Smith</td>
+                <td id="grade"><input type="text" name="grade" value="9" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+              <tr>
+                <td id="student">Allie Baker</td>
+                <td id="grade"><input type="text" name="grade" value="8" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+              <tr>
+                <td id="student">Jon Farmer</td>
+                <td id="grade"><input type="text" name="grade" value="5" style="width:25%;"></td>
+                <td id="totalPoints">10</td>
+              </tr>
+            </table>
+          </td>
+          <script type="text/javascript">
+            jQuery( "#expand-3" ).click(function() {
+              var buttonElement = jQuery(this);
+              if (buttonElement.data("expanded") == 1) {
+                jQuery( "#expanded-3" ).slideUp( "slow", function() {
+                  buttonElement.data("expanded", "0");
+                });
+              } else {
+                jQuery( "#expanded-3" ).slideDown( "slow", function() {
+                  buttonElement.data("expanded", "1");
+                });
+              }
+          });
+          </script>
+        </tr>
+
+        <tr id="row-4">
+          <td><a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="1"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>        
+          <td id="name" style="text-align: center;">Exam One</td>
+          <td><button id="expand-4" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
+        </tr>
+        <tr id="expanded-4" style="display:none;">
+          <td colspan="4">
+            <table class="table table-hover">
+              <tr>
+                <th>Student</th>
+                <th>Grade</th>
+                <th>Total Points</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td id="student">Sally Brown</td>
+                <td id="grade"><input type="text" name="grade" value="95" style="width:25%;"></td>
+                <td id="totalPoints">100</td>
+              </tr>
+              <tr>
+                <td id="student">Sam Smith</td>
+                <td id="grade"><input type="text" name="grade" value="90" style="width:25%;"></td>
+                <td id="totalPoints">100</td>
+              </tr>
+              <tr>
+                <td id="student">Allie Baker</td>
+                <td id="grade"><input type="text" name="grade" value="80" style="width:25%;"></td>
+                <td id="totalPoints">100</td>
+              </tr>
+              <tr>
+                <td id="student">Jon Farmer</td>
+                <td id="grade"><input type="text" name="grade" value="55" style="width:25%;"></td>
+                <td id="totalPoints">100</td>
+              </tr>
+            </table>
+          </td>
+          <script type="text/javascript">
+            jQuery( "#expand-4" ).click(function() {
+              var buttonElement = jQuery(this);
+              if (buttonElement.data("expanded") == 1) {
+                jQuery( "#expanded-4" ).slideUp( "slow", function() {
+                  buttonElement.data("expanded", "0");
+                });
+              } else {
+                jQuery( "#expanded-4" ).slideDown( "slow", function() {
+                  buttonElement.data("expanded", "1");
+                });
+              }
+          });
+          </script>
+        </tr>
+
+        <script>
+          $( "#grade" ).change(function() {
+            alert( "Grade updated." );
+          });
+        </script>
 
     </table>
   </div>
-  <ng-view></ng-view>
 </div>
 
 </body>

@@ -24,12 +24,14 @@ $(document).ready(function() {
     function attachNextMonthBtn() {
     	var nextMonthBtn = jQuery('#nextMonthBtn').click(function() {
     		calendar.navigate('next');
+    		attachCalCellHandlers();
     	});
     }
 
     function attachPrevMonthBtn() {
     	var nextMonthBtn = jQuery('#prevMonthBtn').click(function() {
     		calendar.navigate('prev');
+    		attachCalCellHandlers();
     	});
     }
 
