@@ -33,12 +33,6 @@ $(document).ready(function() {
     	});
     }
 
-	function setTodaysMonth() {
-		var todaysDate = new Date();
-		var todaysMonth = monthNames['m'+todaysDate.getMonthFormatted()];
-		jQuery('#today-date').text(todaysMonth);
-	};
-
 	function attachCalCellHandlers() {
 		jQuery('.cal-cell').click(function(evt) {
 			var selectedDate = jQuery('[data-cal-date]', this).data('cal-date').split('-');
@@ -53,7 +47,6 @@ $(document).ready(function() {
 	};
 
 	attachCalCellHandlers();
-	// setTodaysMonth();
 	attachPrevMonthBtn();
 	attachNextMonthBtn();
 });

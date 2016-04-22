@@ -1020,10 +1020,16 @@ if(!String.prototype.formatNum) {
 	};
 
 	Calendar.prototype._updateTitle = function() {
-		var monthNumber = this.options.day.split('-')[1];
-		var todaysMonth = strings['m'+monthNumber];
-		console.log("monthNumber: " + monthNumber);
-		jQuery('#today-date').text(todaysMonth);
+		var day = this.options.day;
+		if(day == "now") {
+			var todaysDate = new Date();
+			var todaysMonth = strings['m'+todaysDate.getMonthFormatted()];
+			jQuery('#today-date').text(todaysMonth);
+		} else {
+			var monthNumber = this.options.day.split('-')[1];
+			var todaysMonth = strings['m'+monthNumber];
+			jQuery('#today-date').text(todaysMonth);
+		}
 	};
 
 	Calendar.prototype._update_modal = function() {
