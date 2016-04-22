@@ -15,24 +15,27 @@ $(document).ready(function() {
 		m12: 'December'
 	};
 
-	var offsetMonthNames = {
-		m0: 'January',
-		m1: 'February',
-		m2: 'March',
-		m3: 'April',
-		m4: 'May',
-		m5: 'June',
-		m6: 'July',
-		m7: 'August',
-		m8: 'September',
-		m9: 'October',
-		m10: 'November',
-		m11: 'December'
-	};
+	var calendar = jQuery("#calendar").calendar(
+	{
+        tmpl_path: "../third_party/bootstrap-calendar/tmpls/",
+        events_source: function () { return []; }
+    }); 
+
+    function attachNextMonthBtn() {
+    	var nextMonthBtn = jQuery('#nextMonthBtn').click(function() {
+    		calendar.navigate('next');
+    	});
+    }
+
+    function attachPrevMonthBtn() {
+    	var nextMonthBtn = jQuery('#prevMonthBtn').click(function() {
+    		calendar.navigate('prev');
+    	});
+    }
 
 	function setTodaysMonth() {
 		var todaysDate = new Date();
-		var todaysMonth = offsetMonthNames['m'+todaysDate.getMonth()];
+		var todaysMonth = monthNames['m'+todaysDate.getMonthFormatted()];
 		jQuery('#today-date').text(todaysMonth);
 	};
 
@@ -50,5 +53,7 @@ $(document).ready(function() {
 	};
 
 	attachCalCellHandlers();
-	setTodaysMonth();
+	// setTodaysMonth();
+	attachPrevMonthBtn();
+	attachNextMonthBtn();
 });

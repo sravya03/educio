@@ -218,6 +218,19 @@ if(!String.prototype.formatNum) {
 		m10: 'November',
 		m11: 'December',
 
+		m01: 'January',
+		m02: 'February',
+		m03: 'March',
+		m04: 'April',
+		m05: 'May',
+		m06: 'June',
+		m07: 'July',
+		m08: 'August',
+		m09: 'September',
+		m10: 'October',
+		m11: 'November',
+		m12: 'December',
+
 		ms0: 'Jan',
 		ms1: 'Feb',
 		ms2: 'Mar',
@@ -451,6 +464,7 @@ if(!String.prototype.formatNum) {
 
 		this.context.append(this.options.templates[this.options.view](data));
 		this._update();
+		this._updateTitle();
 	};
 
 	Calendar.prototype._format_hour = function(str_hour) {
@@ -1003,6 +1017,13 @@ if(!String.prototype.formatNum) {
 
 		this._update_modal();
 
+	};
+
+	Calendar.prototype._updateTitle = function() {
+		var monthNumber = this.options.day.split('-')[1];
+		var todaysMonth = strings['m'+monthNumber];
+		console.log("monthNumber: " + monthNumber);
+		jQuery('#today-date').text(todaysMonth);
 	};
 
 	Calendar.prototype._update_modal = function() {
