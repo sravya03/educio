@@ -59,7 +59,7 @@
 		        </div>
 	      	</div>
 
-  			<a href="#" data-toggle="modal" data-target="#confirm-delete"><button id="deleteAll" type="button" class="btn btn-danger btn-md" style="border-radius: 50%; font-size:24px;"><span class="glyphicon glyphicon-minus"></span></button></a>
+  			<a href="#" data-toggle="modal" data-target="#confirm-delete"><button id="deleteAll" type="button" class="btn btn-danger btn-lg btn-round" style="width: 75px; height: 75px; border-radius: 50%;"><span class="glyphicon glyphicon-trash" style="align: center;"></span></button></a>
     
 	      	<script>
 	          	$('#confirm-delete').on('show.bs.modal', function(e) {
@@ -74,7 +74,7 @@
 		        });
 	      	</script>
 
-      		<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal" style="border-radius: 50%; float:right; font-size:24px;"><span class="glyphicon glyphicon-plus"></span></button>
+      		<button type="button" class="btn btn-success btn-lg btn-round" data-toggle="modal" data-target="#myModal" style="width: 75px; height: 75px; border-radius: 50%;float:right;"><span class="glyphicon glyphicon-ok"></span></button>
 
 	      <!-- W3Schools Example -->
 	      <!-- Modal -->
@@ -168,7 +168,8 @@
 
 	    <table id="agendaTable" class="table table-hover" style="text-align:center;">
 	      <tr>
-			<td id="delete"><a href="#" data-toggle="modal" data-target="#delete-one"><button id="deleteOne" type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;"><span class="glyphicon glyphicon-minus"></span></button></td>	        <td id="name">Notes</td>
+			<td id="delete"><a href="#" data-toggle="modal" data-target="#delete-one"><button type="button" class="btn btn-danger btn-xs" style="width: 35px; height: 35px; border-radius: 50%;"><span class="glyphicon glyphicon-minus" style="font-size: 20px;"></span></button></td>	        
+			<td id="name">Notes</td>
 	        <td><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
 	      </tr>
 	    </table>

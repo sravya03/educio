@@ -5,15 +5,3 @@
     left: 40%;
     margin: -50px 0 0 -50px;
 }
-
-.btn {
-	border-radius: 12px;
-}
-
-#delete .glyphicon{
-	font-size: 20px;
-}
-
-.glyphicon span{
-	text-align: center;
-}
