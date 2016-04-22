@@ -29,7 +29,7 @@ $(document).ready(function() {
     }
 
     function attachPrevMonthBtn() {
-    	var nextMonthBtn = jQuery('#prevMonthBtn').click(function() {
+    	var prevMonthBtn = jQuery('#prevMonthBtn').click(function() {
     		calendar.navigate('prev');
     		attachCalCellHandlers();
     	});
