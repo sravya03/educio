@@ -5,3 +5,21 @@
 #today-date {
 	
 }
+
+#nextMonthBtn {
+    position: absolute;
+    top: 4%;
+    left: 82%;
+    color: gold;
+    cursor: hand;
+    font-size: 32px;
+}
+
+#prevMonthBtn{
+    position: absolute;
+    top: 4%;
+    left: 23%;
+    color: gold;
+    cursor: hand;
+    font-size: 32px;
+}
