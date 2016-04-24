@@ -26,7 +26,7 @@ $(document).ready(function() {
 		    '</button>' +
 		  '</a>' +
 		'</td>';
-		var nameCol = '<td id="name" style="text-align: center;">' + name +'</td>';
+		var nameCol = '<td class="name" style="text-align: center;">' + name +'</td>';
 		var dropdownCol =
 		'<td>' +
 		  '<button id="expand-' + nextRowId +'" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;">' +
@@ -38,32 +38,36 @@ $(document).ready(function() {
 		var expandedRow = jQuery("<tr />", { id : "expanded-" + nextRowId, style : "display:none;" });
 		var expandableTable =
         '<td colspan="4">' +
-          '<table class="table table-hover">' +
+          '<table class="table">' +
             '<tr>' +
+              '<th></th>' +
               '<th>Student</th>' +
               '<th>Grade</th>' +
               '<th>Total Points</th>' +
-              '<th></th>' +
             '</tr>' +
             '<tr>' +
-              '<td>Sally Brown</td>' +
-              '<td><input type="text" name="grade" value="' + sallyPointsEarned +'" style="width:25%;"></td>' +
-              '<td>' + totalPoints +'</td>' +
+              '<td></td>' +
+              '<td class="student">Sally Brown</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + sallyPointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + totalPoints +'</td>' +
             '</tr>' +
             '<tr>' +
-              '<td>Sam Smith</td>' +
-              '<td><input type="text" name="grade" value="' + samPointsEarned +'" style="width:25%;"></td>' +
-              '<td>' + totalPoints +'</td>' +
+              '<td></td>' +
+              '<td class="student">Sam Smith</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + samPointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + totalPoints +'</td>' +
             '</tr>' +
             '<tr>' +
-              '<td>Allie Baker</td>' +
-              '<td><input type="text" name="grade" value="' + alliePointsEarned +'" style="width:25%;"></td>' +
-              '<td>' + totalPoints +'</td>' +
+              '<td></td>' +
+              '<td class="student">Allie Baker</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + alliePointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + totalPoints +'</td>' +
             '</tr>' +
             '<tr>' +
-              '<td>Jon Farmer</td>' +
-              '<td><input type="text" name="grade" value="' + jonPointsEarned +'" style="width:25%;"></td>' +
-              '<td>' + totalPoints +'</td>' +
+              '<td></td>' +
+              '<td class="student">Jon Farmer</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + jonPointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + totalPoints +'</td>' +
             '</tr>' +
           '</table>' +
         '</td>';
