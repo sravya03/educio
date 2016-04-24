@@ -21,8 +21,8 @@ $(document).ready(function() {
 		var deleteCol =
 		'<td>' +
 		  '<a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="' + nextRowId +'">' +
-		    '<button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; font-size:12px;">' +
-		      '<span class="glyphicon glyphicon-minus"></span>' +
+		    '<button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; width:35px; height: 35px;">' +
+		      '<span class="glyphicon glyphicon-minus" style="font-size: 20px;"></span>' +
 		    '</button>' +
 		  '</a>' +
 		'</td>';

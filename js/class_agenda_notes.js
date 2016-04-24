@@ -17,7 +17,7 @@ $(document).ready(function() {
 		var deleteBtn = jQuery("<button />", {
 			class : "btn btn-danger btn-xs",
 			type : "button",
-			style :  "border-radius: 50%; font-size:12px;"
+			style :  "border-radius: 50%; width:35px; height: 35px;"
 		});
 		var deleteSign = jQuery("<span />", { class : "glyphicon glyphicon-minus" });
 
