@@ -44,7 +44,7 @@ $(document).ready(function() {
 		nextRowId++;
 	}
 
-	function refreshAddNoteModal() {
+	function clearAddNoteModal() {
 		jQuery("#agendaNoteName").val("");
 		jQuery("#notesTextArea").val("");
 		jQuery("#addAgendaDocList").empty();
@@ -79,6 +79,9 @@ $(document).ready(function() {
     	var name = jQuery("#agendaNoteName").val();
     	createAndAddAgendaNoteToTable(name);
     	jQuery("#addNoteModal").modal("hide");
-    	refreshAddNoteModal();
     });
+
+    jQuery("#addNoteModal").click(function() {
+    	clearAddNoteModal();
+    })
 });

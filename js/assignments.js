@@ -87,7 +87,6 @@ $(document).ready(function() {
           '});' +
         '</script>';
         expandedRow.append(expandableTable).append(script);
-        console.log("completed");
         jQuery("#assignmentTable").append(visibleRow).append(expandedRow);
 	}
 
@@ -122,6 +121,9 @@ $(document).ready(function() {
 
     jQuery("#addAssignmentBtn").click(function() {
     	createAndAddAssignmentToTable();
-    	clearAddAssignmentModal();
+    });
+
+    jQuery("#addAssignmentModal").click(function() {
+      clearAddAssignmentModal();
     });
 });
