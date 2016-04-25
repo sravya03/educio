@@ -107,6 +107,7 @@ $(document).ready(function() {
 	jQuery('#deleteRowConfirmationBtn').on("click", function() {
         console.log(rowForAttemptedDeletion);
         jQuery('#row-' + rowForAttemptedDeletion).remove();
+        jQuery('#expanded-' + rowForAttemptedDeletion).remove();
         jQuery("#deleteRowModal").modal('hide');
     });
 
