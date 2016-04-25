@@ -99,6 +99,10 @@ $(document).ready(function() {
 		jQuery("#jonPointsEarned").val("");
 	}
 
+  jQuery('#addAssignmentModal').on('show.bs.modal', function(e) {
+    clearAddAssignmentModal();
+  });
+
 	jQuery('#deleteRowModal').on('show.bs.modal', function(e) {
 		rowForAttemptedDeletion = parseInt(jQuery(e.relatedTarget).data('rowIndex'));
 	});
@@ -121,9 +125,5 @@ $(document).ready(function() {
 
     jQuery("#addAssignmentBtn").click(function() {
     	createAndAddAssignmentToTable();
-    });
-
-    jQuery("#addAssignmentModal").click(function() {
-      clearAddAssignmentModal();
     });
 });

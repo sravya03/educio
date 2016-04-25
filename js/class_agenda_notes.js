@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	localStorage.setItem("uploadedFilesContent", "");
+
 	var nextRowId = 2;
 
 	var rowForAttemptedDeletion = undefined;
@@ -27,6 +29,7 @@ $(document).ready(function() {
 		/*********** Dropdown Column ***********/
 		var dropdownCol = jQuery("<td />");
 		var dropdownBtn = jQuery("<button />", {
+			id : 'expand-' + nextRowId,
 			class : "btn btn-primary dropdown-toggle",
 			type : "button",
 			"data-toggle" : "dropdown",
@@ -38,8 +41,41 @@ $(document).ready(function() {
 		row.append(deleteOpCol.append(anchorForDelete.append(deleteBtn.append(deleteSign))))
 		   .append(nameCol)
 		   .append(dropdownCol.append(dropdownBtn.append(dropdownCaret)));
+
+		 var notes = jQuery("#notesTextArea").val();
+		 var uploadedFilesContent = localStorage.getItem("uploadedFilesContent");
+		 var subRow =
+		 '<tr id="expanded-' + nextRowId + '" style="display:none;">' +
+          			'<td colspan="4">' +
+           				'<table class="table">' +
+              				'<tr>' +
+              					'<div class="agendaItem" class="col-md-offset-2">' +
+	                				'<h3>Notes: </h3>' +
+	                				'<p>' + notes + '</p>' +
+	                				'<h3>Document: </h3> ' +
+	                				uploadedFilesContent +
+                				'</div>	' +
+                			'</tr>' +
+            			'</table>' +
+          			'</td>' +
+			          '<script type="text/javascript">' +
+			            'jQuery( "#expand-' + nextRowId + '" ).click(function() {' +
+			              'var buttonElement = jQuery(this);' +
+			              'if (buttonElement.data("expanded") == 1) {' +
+			                'jQuery( "#expanded-' + nextRowId + '" ).slideUp( "slow", function() {' +
+			                  'buttonElement.data("expanded", "0");' +
+			                '});' +
+			              '} else {' +
+			                'jQuery( "#expanded-' + nextRowId + '" ).slideDown( "slow", function() {' +
+			                  'buttonElement.data("expanded", "1");' +
+			                '});' +
+			              '}' +
+			          '});' +
+			          '</script>' +
+        		'</tr>';
 		
 		jQuery("#agendNotesTable").append(row);
+		jQuery("#agendNotesTable").append(subRow);
 
 		nextRowId++;
 	}
@@ -52,6 +88,10 @@ $(document).ready(function() {
 
 	jQuery('#deleteRowModal').on('show.bs.modal', function(e) {
 		rowForAttemptedDeletion = parseInt(jQuery(e.relatedTarget).data('rowIndex'));
+	});
+
+	jQuery('#addNoteModal').on('hidden.bs.modal', function () {
+	  	clearAddNoteModal();
 	});
 
 	jQuery('#deleteRowConfirmationBtn').on("click", function(){
@@ -80,8 +120,4 @@ $(document).ready(function() {
     	createAndAddAgendaNoteToTable(name);
     	jQuery("#addNoteModal").modal("hide");
     });
-
-    jQuery("#addNoteModal").click(function() {
-    	clearAddNoteModal();
-    })
 });

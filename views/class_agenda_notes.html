@@ -98,16 +98,17 @@
 								<script>
 								  	function handleFileSelect(evt) {
 								    	var files = evt.target.files; // FileList object
+								    	console.log("hello");
 
 								    	// files is a FileList of File objects. List some properties.
 								    	var output = [];
 								    	for (var i = 0, f; f = files[i]; i++) {
-								      		output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-								                  f.size, ' bytes, last modified: ',
-								                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-								                  '</li>');
+								      		output.push('<a href="#">', escape(f.name), '</a><br>');
 								    	}
-								    	document.getElementById('addAgendaDocList').innerHTML = '<ul>' + output.join('') + '</ul>';
+								    	var uploadedFilesContent = localStorage.getItem("uploadedFilesContent") + output.join('');
+								    	console.log(uploadedFilesContent);
+								    	jQuery('#addAgendaDocList').html(uploadedFilesContent);
+								    	localStorage.setItem("uploadedFilesContent", uploadedFilesContent);
 								  	}
 
 								  	document.getElementById('files').addEventListener('change', handleFileSelect, false);
