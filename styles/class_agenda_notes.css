@@ -1,3 +1,6 @@
+#agendaItem {
+    text-align:left;
+}
 .delete .glyphicon{
     font-size: 20px;
 }
