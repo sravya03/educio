@@ -87,7 +87,6 @@ $(document).ready(function() {
           '});' +
         '</script>';
         expandedRow.append(expandableTable).append(script);
-        console.log("completed");
         jQuery("#assignmentTable").append(visibleRow).append(expandedRow);
 	}
 
@@ -107,6 +106,7 @@ $(document).ready(function() {
 	jQuery('#deleteRowConfirmationBtn').on("click", function() {
         console.log(rowForAttemptedDeletion);
         jQuery('#row-' + rowForAttemptedDeletion).remove();
+        jQuery('#expanded-' + rowForAttemptedDeletion).remove();
         jQuery("#deleteRowModal").modal('hide');
     });
 
@@ -121,6 +121,9 @@ $(document).ready(function() {
 
     jQuery("#addAssignmentBtn").click(function() {
     	createAndAddAssignmentToTable();
-    	clearAddAssignmentModal();
+    });
+
+    jQuery("#addAssignmentModal").click(function() {
+      clearAddAssignmentModal();
     });
 });
