@@ -460,11 +460,33 @@
 						});
 			    	</script>
 			  	</tr>
-	          	<script>
-            		$( ".grade" ).change(function() {
-              			alert( "Grade updated." );
-            		});
-          		</script>
+			  	
+	          	<!-- ################################# -->
+		        <!-- #### Grade Update Modal ######### -->
+		        <!-- ################################# -->
+
+		        <div class="modal fade" id="confirmGradeUpdate" role="dialog">
+		          <div class="modal-dialog">
+		            <div class="modal-content">
+		              <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal">&times;</button>
+		                <h2 style="text-align:center;">Grade Updated</h2>
+		              </div>
+		              <div class="modal-body" style="text-align:center;">
+		                You've updated the grade.
+		              </div>
+		              <div class="modal-footer">
+		                <button id="okButton" class="btn btn-lg btn-primary btn-block" type="close" data-dismiss="modal">Close</button>
+		            </div>
+		            </div>
+		          </div>
+		        </div>
+
+		        <script>
+		          $( ".grade" ).change(function() {
+		            $('#confirmGradeUpdate').modal('show'); 
+		          });
+		        </script>
 			</table>
 	</div>
 	<ng-view></ng-view>
