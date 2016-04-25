@@ -49,7 +49,7 @@ $(document).ready(function() {
           			'<td colspan="4">' +
            				'<table class="table">' +
               				'<tr>' +
-              					'<div class="agendaItem" class="col-md-offset-2">' +
+              					'<div id="agendaItem" class="col-md-offset-2 col-md-9">' +
 	                				'<h3>Notes: </h3>' +
 	                				'<p>' + notes + '</p>' +
 	                				'<h3>Document: </h3> ' +
