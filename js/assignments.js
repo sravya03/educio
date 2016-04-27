@@ -88,6 +88,7 @@ $(document).ready(function() {
         '</script>';
         expandedRow.append(expandableTable).append(script);
         jQuery("#assignmentTable").append(visibleRow).append(expandedRow);
+        setupGradeUpdateTrigger();
 	}
 
 	function clearAddAssignmentModal() {
@@ -126,4 +127,12 @@ $(document).ready(function() {
     jQuery("#addAssignmentBtn").click(function() {
     	createAndAddAssignmentToTable();
     });
+
+    function setupGradeUpdateTrigger() {
+      jQuery( ".grade" ).change(function() {
+        jQuery('#confirmGradeUpdate').modal('show'); 
+      });
+    }
+
+    setupGradeUpdateTrigger();
 });
