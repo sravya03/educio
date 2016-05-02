@@ -3,39 +3,69 @@ $(document).ready(function() {
 
 	var rowForAttemptedDeletion = undefined;
 
-	function createAndAddAssignmentToTable() {
-		// Add conditionals to prevent the modal from closing 
-		// when the form is invalid. Or simply use an actual form
-		// which will allow one to use custom validation functions.
-		var name = jQuery("#assignmentName").val();
-		var totalPoints = jQuery("#totalPoints").val();
-		var sallyPointsEarned = jQuery("#sallyPointsEarned").val();
-		var samPointsEarned = jQuery("#samPointsEarned").val();
-		var alliePointsEarned = jQuery("#alliePointsEarned").val();
-		var jonPointsEarned = jQuery("#jonPointsEarned").val();
+  function maybeInitAssignments() {
+    if (!localStorage.getItem("assignments")) {
+      var assignments = [];
 
-		// if (!(name && totalPoints && sallyPointsEarned && samPointsEarned && alliePointsEarned && jonPointsEarned))
-		// 	return;
+      var triangleHomework = {
+        id: nextRowId,
+        name: "Triangle Homework",
+        totalPoints: 10,
+        sallyPointsEarned: 9,
+        samPointsEarned: 9,
+        alliePointsEarned: 8,
+        jonPointsEarned: 5
+      };
+      createAndAddAssignmentToTable(triangleHomework);
+      assignments.push(triangleHomework);
+      nextRowId++;
 
-		var visibleRow = jQuery("<tr />", { id : "row-" + nextRowId });
+      // Initialize other assignments
+
+      localStorage.setItem("assignments", JSON.stringify(assignments));
+    } else {
+      var assignments = JSON.parse(localStorage.getItem("assignments"));
+      assignments.forEach(function(assignment) {
+        createAndAddAssignmentToTable(assignment);
+      });
+    }
+  }
+
+  function getAddAssignmentFormValues(id) {
+    // Add conditionals to prevent the modal from closing 
+    // when the form is invalid. Or simply use an actual form
+    // which will allow one to use custom validation functions.
+    return {
+      id : id,
+      name : jQuery("#assignmentName").val(),
+      totalPoints : jQuery("#totalPoints").val(),
+      sallyPointsEarned : jQuery("#sallyPointsEarned").val(),
+      samPointsEarned : jQuery("#samPointsEarned").val(),
+      alliePointsEarned : jQuery("#alliePointsEarned").val(),
+      jonPointsEarned : jQuery("#jonPointsEarned").val()
+    };
+  }
+
+	function createAndAddAssignmentToTable(params) {
+		var visibleRow = jQuery("<tr />", { id : "row-" + params.id });
 		var deleteCol =
 		'<td>' +
-		  '<a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="' + nextRowId +'">' +
+		  '<a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="' + params.id +'">' +
 		    '<button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; width:35px; height: 35px;">' +
 		      '<span class="glyphicon glyphicon-minus" style="font-size: 20px;"></span>' +
 		    '</button>' +
 		  '</a>' +
 		'</td>';
-		var nameCol = '<td class="name" style="text-align: center;">' + name +'</td>';
+		var nameCol = '<td class="name" style="text-align: center;">' + params.name +'</td>';
 		var dropdownCol =
 		'<td>' +
-		  '<button id="expand-' + nextRowId +'" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;">' +
+		  '<button id="expand-' + params.id +'" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;">' +
 		    '<span class="caret"></span>' +
 		  '</button>' +
 		'</td>';
 		visibleRow.append(deleteCol).append(nameCol).append(dropdownCol);
 
-		var expandedRow = jQuery("<tr />", { id : "expanded-" + nextRowId, style : "display:none;" });
+		var expandedRow = jQuery("<tr />", { id : "expanded-" + params.id, style : "display:none;" });
 		var expandableTable =
         '<td colspan="4">' +
           '<table class="table">' +
@@ -48,39 +78,39 @@ $(document).ready(function() {
             '<tr>' +
               '<td></td>' +
               '<td class="student">Sally Brown</td>' +
-              '<td class="grade"><input type="text" name="grade" value="' + sallyPointsEarned +'" style="width:100%;"></td>' +
-              '<td class="totalPoints">' + totalPoints +'</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + params.sallyPointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + params.totalPoints +'</td>' +
             '</tr>' +
             '<tr>' +
               '<td></td>' +
               '<td class="student">Sam Smith</td>' +
-              '<td class="grade"><input type="text" name="grade" value="' + samPointsEarned +'" style="width:100%;"></td>' +
-              '<td class="totalPoints">' + totalPoints +'</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + params.samPointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + params.totalPoints +'</td>' +
             '</tr>' +
             '<tr>' +
               '<td></td>' +
               '<td class="student">Allie Baker</td>' +
-              '<td class="grade"><input type="text" name="grade" value="' + alliePointsEarned +'" style="width:100%;"></td>' +
-              '<td class="totalPoints">' + totalPoints +'</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + params.alliePointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + params.totalPoints +'</td>' +
             '</tr>' +
             '<tr>' +
               '<td></td>' +
               '<td class="student">Jon Farmer</td>' +
-              '<td class="grade"><input type="text" name="grade" value="' + jonPointsEarned +'" style="width:100%;"></td>' +
-              '<td class="totalPoints">' + totalPoints +'</td>' +
+              '<td class="grade"><input type="text" name="grade" value="' + params.jonPointsEarned +'" style="width:100%;"></td>' +
+              '<td class="totalPoints">' + params.totalPoints +'</td>' +
             '</tr>' +
           '</table>' +
         '</td>';
 		var script = 
 		'<script type="text/javascript">' +
-          'jQuery( "#expand-' + nextRowId +'" ).click(function() {' +
+          'jQuery( "#expand-' + params.id +'" ).click(function() {' +
             'var buttonElement = jQuery(this);' +
-            'if (buttonElement.data("expanded") == ' + nextRowId +') {' +
-              'jQuery( "#expanded-' + nextRowId +'" ).slideUp( "slow", function() {' +
+            'if (buttonElement.data("expanded") == 1) {' +
+              'jQuery( "#expanded-' + params.id +'" ).slideUp( "slow", function() {' +
                 'buttonElement.data("expanded", "0");' +
               '});' +
             '} else {' +
-              'jQuery( "#expanded-' + nextRowId +'" ).slideDown( "slow", function() {' +
+              'jQuery( "#expanded-' + params.id +'" ).slideDown( "slow", function() {' +
                 'buttonElement.data("expanded", "1");' +
               '});' +
             '}' +
@@ -113,26 +143,28 @@ $(document).ready(function() {
         jQuery('#row-' + rowForAttemptedDeletion).remove();
         jQuery('#expanded-' + rowForAttemptedDeletion).remove();
         jQuery("#deleteRowModal").modal('hide');
+  });
+
+	jQuery('#confirm-delete').on('show.bs.modal', function(e) {
+      jQuery(this).find('.btn-ok').attr('href', jQuery(e.relatedTarget).data('href'));
+	});
+
+  jQuery("#deleteClick").click(function() {
+      jQuery("#assignmentTable tr").remove();
+      jQuery("#confirm-delete").modal('hide');
+  });
+
+  jQuery("#addAssignmentBtn").click(function() {
+  	createAndAddAssignmentToTable(getAddAssignmentFormValues(nextRowId));
+    nextRowId++;
+  });
+
+  function setupGradeUpdateTrigger() {
+    jQuery( ".grade" ).change(function() {
+      jQuery('#confirmGradeUpdate').modal('show'); 
     });
+  }
 
-  	jQuery('#confirm-delete').on('show.bs.modal', function(e) {
-        jQuery(this).find('.btn-ok').attr('href', jQuery(e.relatedTarget).data('href'));
-  	});
-
-    jQuery("#deleteClick").click(function() {
-        jQuery("#assignmentTable tr").remove();
-        jQuery("#confirm-delete").modal('hide');
-    });
-
-    jQuery("#addAssignmentBtn").click(function() {
-    	createAndAddAssignmentToTable();
-    });
-
-    function setupGradeUpdateTrigger() {
-      jQuery( ".grade" ).change(function() {
-        jQuery('#confirmGradeUpdate').modal('show'); 
-      });
-    }
-
-    setupGradeUpdateTrigger();
+  maybeInitAssignments();
+  setupGradeUpdateTrigger();
 });
