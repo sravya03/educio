@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 	function maybeInitAgendaNotes() {
 	    if (!localStorage.getItem("agendaNotes")) {
-	      var agendaNotes = [];
+	      localStorage.setItem("agendaNotes", JSON.stringify({}));
 
 	      var notes = {
 	        id: getNextRowId(),
@@ -19,15 +19,14 @@ $(document).ready(function() {
 	        notes: "These are some notes.",
 	        uploadedFilesContent: '<a href="#">FileName</a><br>'
 	      };
-	      createAndAddAgendaNoteToTable(notes);
-	      agendaNotes.push(notes);
-
-	      localStorage.setItem("agendaNotes", JSON.stringify(agendaNotes));
+	      createAndAddAgendaNoteToTable(notes, true);
 	    } else {
 	      var agendaNotes = JSON.parse(localStorage.getItem("agendaNotes"));
-	      agendaNotes.forEach(function(agendaNotes) {
-	        createAndAddAgendaNoteToTable(agendaNotes);
-	      });
+	      for (var agendaId in agendaNotes) {
+			  if (agendaNotes.hasOwnProperty(agendaId)) {
+			    createAndAddAgendaNoteToTable(agendaNotes[agendaId], false);
+			  }
+		  }
 	    }
   	}
 
@@ -43,7 +42,7 @@ $(document).ready(function() {
 	    };
 	  }
 	
-	function createAndAddAgendaNoteToTable(params) {
+	function createAndAddAgendaNoteToTable(params, addToStorage) {
 		var row = jQuery("<tr />", { id : "row-" + params.id });
 
 		/********** Delete Column *************/
@@ -114,6 +113,22 @@ $(document).ready(function() {
 		
 		jQuery("#agendNotesTable").append(row);
 		jQuery("#agendNotesTable").append(subRow);
+
+		if (addToStorage) {
+			addNotesToStorage(params);
+		}
+	}
+
+	function addNotesToStorage(agendaNote) {
+		var agendaNotes = JSON.parse(localStorage.getItem("agendaNotes"));
+		agendaNotes[agendaNote.id] = agendaNote;
+	    localStorage.setItem("agendaNotes", JSON.stringify(agendaNotes));
+	}
+
+	function removeNotesFromStorage(id) {
+		var agendaNotes = JSON.parse(localStorage.getItem("agendaNotes"));
+		delete agendaNotes[id];
+		localStorage.setItem("agendaNotes", JSON.stringify(agendaNotes));
 	}
 
 	function clearAddNoteModal() {
@@ -134,6 +149,7 @@ $(document).ready(function() {
         console.log(rowForAttemptedDeletion);
         jQuery('#row-' + rowForAttemptedDeletion).remove();
         jQuery('#expanded-' + rowForAttemptedDeletion).remove();
+        removeNotesFromStorage(rowForAttemptedDeletion);
         jQuery("#deleteRowModal").modal('hide');
     });
 
@@ -153,7 +169,7 @@ $(document).ready(function() {
     jQuery("#addAgendaNoteForm").submit(function(e) {
     	e.preventDefault();
     	var name = jQuery("#agendaNoteName").val();
-    	createAndAddAgendaNoteToTable(getAddAgendaNoteFormValues(getNextRowId));
+    	createAndAddAgendaNoteToTable(getAddAgendaNoteFormValues(getNextRowId), true);
     	jQuery("#addNoteModal").modal("hide");
     });
 

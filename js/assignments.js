@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   function maybeInitAssignments() {
     if (!localStorage.getItem("assignments")) {
-      var assignments = [];
+      localStorage.setItem("assignments", JSON.stringify([]));
 
       var triangleHomework = {
         id: getNextRowId(),
@@ -20,8 +20,7 @@ $(document).ready(function() {
         alliePointsEarned: 8,
         jonPointsEarned: 5
       };
-      createAndAddAssignmentToTable(triangleHomework);
-      assignments.push(triangleHomework);
+      createAndAddAssignmentToTable(triangleHomework, true);
 
       var factorization = {
         id: getNextRowId(),
@@ -32,8 +31,7 @@ $(document).ready(function() {
         alliePointsEarned: 8,
         jonPointsEarned: 5
       };
-      createAndAddAssignmentToTable(factorization);
-      assignments.push(factorization);
+      createAndAddAssignmentToTable(factorization, true);
 
       var multiplication = {
         id: getNextRowId(),
@@ -44,8 +42,7 @@ $(document).ready(function() {
         alliePointsEarned: 8,
         jonPointsEarned: 5
       };
-      createAndAddAssignmentToTable(multiplication);
-      assignments.push(multiplication);
+      createAndAddAssignmentToTable(multiplication, true);
 
       var examOne = {
         id: getNextRowId(),
@@ -56,15 +53,14 @@ $(document).ready(function() {
         alliePointsEarned: 80,
         jonPointsEarned: 50
       };
-      createAndAddAssignmentToTable(examOne);
-      assignments.push(examOne);
-
-      localStorage.setItem("assignments", JSON.stringify(assignments));
+      createAndAddAssignmentToTable(examOne, true);
     } else {
       var assignments = JSON.parse(localStorage.getItem("assignments"));
-      assignments.forEach(function(assignment) {
-        createAndAddAssignmentToTable(assignment);
-      });
+        for (var assignmentId in assignments) {
+        if (assignments.hasOwnProperty(assignmentId)) {
+          createAndAddAssignmentToTable(assignments[assignmentId], false);
+        }
+      }
     }
   }
 
@@ -83,7 +79,7 @@ $(document).ready(function() {
     };
   }
 
-	function createAndAddAssignmentToTable(params) {
+	function createAndAddAssignmentToTable(params, addToStorage) {
 		var visibleRow = jQuery("<tr />", { id : "row-" + params.id });
 		var deleteCol =
 		'<td>' +
@@ -140,23 +136,39 @@ $(document).ready(function() {
         '</td>';
 		var script = 
 		'<script type="text/javascript">' +
-          'jQuery( "#expand-' + params.id +'" ).click(function() {' +
-            'var buttonElement = jQuery(this);' +
-            'if (buttonElement.data("expanded") == 1) {' +
-              'jQuery( "#expanded-' + params.id +'" ).slideUp( "fast", function() {' +
-                'buttonElement.data("expanded", "0");' +
-              '});' +
-            '} else {' +
-              'jQuery( "#expanded-' + params.id +'" ).slideDown( "fast", function() {' +
-                'buttonElement.data("expanded", "1");' +
-              '});' +
-            '}' +
+      'jQuery( "#expand-' + params.id +'" ).click(function() {' +
+        'var buttonElement = jQuery(this);' +
+        'if (buttonElement.data("expanded") == 1) {' +
+          'jQuery( "#expanded-' + params.id +'" ).slideUp( "fast", function() {' +
+            'buttonElement.data("expanded", "0");' +
           '});' +
-        '</script>';
-        expandedRow.append(expandableTable).append(script);
-        jQuery("#assignmentTable").append(visibleRow).append(expandedRow);
-        setupGradeUpdateTrigger();
+        '} else {' +
+          'jQuery( "#expanded-' + params.id +'" ).slideDown( "fast", function() {' +
+            'buttonElement.data("expanded", "1");' +
+          '});' +
+        '}' +
+      '});' +
+    '</script>';
+    expandedRow.append(expandableTable).append(script);
+    jQuery("#assignmentTable").append(visibleRow).append(expandedRow);
+    setupGradeUpdateTrigger();
+
+    if (addToStorage) {
+      addAssignmentToStorage(params);
+    }
 	}
+
+  function addAssignmentToStorage(assignment) {
+    var agendaNotes = JSON.parse(localStorage.getItem("assignments"));
+    assignments[assignment.id] = assignment;
+    localStorage.setItem("assignments", JSON.stringify(assignments));
+  }
+
+  function removeAssginmentFromStorage(id) {
+    var assignments = JSON.parse(localStorage.getItem("assignments"));
+    delete assignments[id];
+    localStorage.setItem("assignments", JSON.stringify(assignments));
+  }
 
 	function clearAddAssignmentModal() {
 		jQuery("#assignmentName").val("");
@@ -179,6 +191,7 @@ $(document).ready(function() {
         console.log(rowForAttemptedDeletion);
         jQuery('#row-' + rowForAttemptedDeletion).remove();
         jQuery('#expanded-' + rowForAttemptedDeletion).remove();
+        removeAssginmentFromStorage(rowForAttemptedDeletion);
         jQuery("#deleteRowModal").modal('hide');
   });
 
@@ -192,7 +205,7 @@ $(document).ready(function() {
   });
 
   jQuery("#addAssignmentBtn").click(function() {
-  	createAndAddAssignmentToTable(getAddAssignmentFormValues(getNextRowId));
+  	createAndAddAssignmentToTable(getAddAssignmentFormValues(getNextRowId), true);
   });
 
   function setupGradeUpdateTrigger() {
