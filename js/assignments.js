@@ -1,6 +1,10 @@
 $(document).ready(function() {
 	var nextRowId = 5;
 
+  function getNextRowId() {
+    return nextRowId++;
+  }
+
 	var rowForAttemptedDeletion = undefined;
 
   function maybeInitAssignments() {
@@ -8,7 +12,7 @@ $(document).ready(function() {
       var assignments = [];
 
       var triangleHomework = {
-        id: nextRowId,
+        id: getNextRowId(),
         name: "Triangle Homework",
         totalPoints: 10,
         sallyPointsEarned: 9,
@@ -18,10 +22,9 @@ $(document).ready(function() {
       };
       createAndAddAssignmentToTable(triangleHomework);
       assignments.push(triangleHomework);
-      nextRowId++;
 
       var factorization = {
-        id: nextRowId,
+        id: getNextRowId(),
         name: "Factorization",
         totalPoints: 10,
         sallyPointsEarned: 9,
@@ -31,10 +34,9 @@ $(document).ready(function() {
       };
       createAndAddAssignmentToTable(factorization);
       assignments.push(factorization);
-      nextRowId++;
 
       var multiplication = {
-        id: nextRowId,
+        id: getNextRowId(),
         name: "Multiplication",
         totalPoints: 10,
         sallyPointsEarned: 9,
@@ -44,10 +46,9 @@ $(document).ready(function() {
       };
       createAndAddAssignmentToTable(multiplication);
       assignments.push(multiplication);
-      nextRowId++;
 
       var examOne = {
-        id: nextRowId,
+        id: getNextRowId(),
         name: "Exam One",
         totalPoints: 100,
         sallyPointsEarned: 90,
@@ -57,7 +58,6 @@ $(document).ready(function() {
       };
       createAndAddAssignmentToTable(examOne);
       assignments.push(examOne);
-      nextRowId++;
 
       localStorage.setItem("assignments", JSON.stringify(assignments));
     } else {
@@ -68,12 +68,12 @@ $(document).ready(function() {
     }
   }
 
-  function getAddAssignmentFormValues(id) {
+  function getAddAssignmentFormValues(idFunction) {
     // Add conditionals to prevent the modal from closing 
     // when the form is invalid. Or simply use an actual form
     // which will allow one to use custom validation functions.
     return {
-      id : id,
+      id : idFunction(),
       name : jQuery("#assignmentName").val(),
       totalPoints : jQuery("#totalPoints").val(),
       sallyPointsEarned : jQuery("#sallyPointsEarned").val(),
@@ -143,11 +143,11 @@ $(document).ready(function() {
           'jQuery( "#expand-' + params.id +'" ).click(function() {' +
             'var buttonElement = jQuery(this);' +
             'if (buttonElement.data("expanded") == 1) {' +
-              'jQuery( "#expanded-' + params.id +'" ).slideUp( "slow", function() {' +
+              'jQuery( "#expanded-' + params.id +'" ).slideUp( "fast", function() {' +
                 'buttonElement.data("expanded", "0");' +
               '});' +
             '} else {' +
-              'jQuery( "#expanded-' + params.id +'" ).slideDown( "slow", function() {' +
+              'jQuery( "#expanded-' + params.id +'" ).slideDown( "fast", function() {' +
                 'buttonElement.data("expanded", "1");' +
               '});' +
             '}' +
@@ -192,8 +192,7 @@ $(document).ready(function() {
   });
 
   jQuery("#addAssignmentBtn").click(function() {
-  	createAndAddAssignmentToTable(getAddAssignmentFormValues(nextRowId));
-    nextRowId++;
+  	createAndAddAssignmentToTable(getAddAssignmentFormValues(getNextRowId));
   });
 
   function setupGradeUpdateTrigger() {

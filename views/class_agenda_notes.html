@@ -158,41 +158,6 @@
 	    	<h3 id="selectedDate" style="text-align: center;"></h3>
 
 		    <table id="agendNotesTable" class="table" style="text-align:center;">
-
-		  		<tr id="row-1">
-          			<td><a href="#" data-toggle="modal" data-target="#deleteRowModal" data-row-index="1"><button type="button" class="btn btn-danger btn-xs" style="border-radius: 50%; width:35px; height: 35px;"><span class="glyphicon glyphicon-minus" style="font-size: 20px;"></span></button></td>        
-          			<td id="name" style="text-align: center;">Notes</td>
-          			<td><button id="expand-1" data-expanded="0" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding: 4px; margin: 8 0 0 16;"><span class="caret"></span></button></td>
-        		</tr>
-          		<tr id="expanded-1" style="display:none;">
-          			<td colspan="4">
-           				<table class="table">
-              				<tr>
-              					<div id="agendaItem" class="col-md-offset-2 col-md-9">
-	                				<h3>Notes: </h3> 
-	                				<p>These are some notes.</p>
-	                				<h3>Document: </h3> 
-	                				<a href="#"> FileName </a>
-                				</div>	
-                			</tr>
-            			</table>
-          			</td>
-			          <script type="text/javascript">
-			            jQuery( "#expand-1" ).click(function() {
-			              var buttonElement = jQuery(this);
-			              if (buttonElement.data("expanded") == 1) {
-			                jQuery( "#expanded-1" ).slideUp( "slow", function() {
-			                  buttonElement.data("expanded", "0");
-			                });
-			              } else {
-			                jQuery( "#expanded-1" ).slideDown( "slow", function() {
-			                  buttonElement.data("expanded", "1");
-			                });
-			              }
-			          });
-			          </script>
-        		</tr>
-
   			</div>
   		</div>
 	</div>
