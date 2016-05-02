@@ -2,14 +2,14 @@ $(document).ready(function() {
 	var nextRowId = 5;
 
   function getNextRowId() {
-    return nextRowId++;
+    return Math.random()*10000;
   }
 
 	var rowForAttemptedDeletion = undefined;
 
   function maybeInitAssignments() {
     if (!localStorage.getItem("assignments")) {
-      localStorage.setItem("assignments", JSON.stringify([]));
+      localStorage.setItem("assignments", JSON.stringify({}));
 
       var triangleHomework = {
         id: getNextRowId(),

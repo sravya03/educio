@@ -1,10 +1,8 @@
 $(document).ready(function() {
 	localStorage.setItem("uploadedFilesContent", "");
 
-	var nextRowId = 2;
-
 	function getNextRowId() {
-		return nextRowId++;
+		return Math.random()*10000;
 	}
 
 	var rowForAttemptedDeletion = undefined;
@@ -122,6 +120,7 @@ $(document).ready(function() {
 	function addNotesToStorage(agendaNote) {
 		var agendaNotes = JSON.parse(localStorage.getItem("agendaNotes"));
 		agendaNotes[agendaNote.id] = agendaNote;
+		console.log(agendaNotes);
 	    localStorage.setItem("agendaNotes", JSON.stringify(agendaNotes));
 	}
 
