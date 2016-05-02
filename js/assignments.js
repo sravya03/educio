@@ -2,7 +2,7 @@ $(document).ready(function() {
 	var nextRowId = 5;
 
   function getNextRowId() {
-    return Math.random()*10000;
+    return Math.round(Math.random()*10000);
   }
 
 	var rowForAttemptedDeletion = undefined;
