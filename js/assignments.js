@@ -20,7 +20,44 @@ $(document).ready(function() {
       assignments.push(triangleHomework);
       nextRowId++;
 
-      // Initialize other assignments
+      var factorization = {
+        id: nextRowId,
+        name: "Factorization",
+        totalPoints: 10,
+        sallyPointsEarned: 9,
+        samPointsEarned: 9,
+        alliePointsEarned: 8,
+        jonPointsEarned: 5
+      };
+      createAndAddAssignmentToTable(factorization);
+      assignments.push(factorization);
+      nextRowId++;
+
+      var multiplication = {
+        id: nextRowId,
+        name: "Multiplication",
+        totalPoints: 10,
+        sallyPointsEarned: 9,
+        samPointsEarned: 9,
+        alliePointsEarned: 8,
+        jonPointsEarned: 5
+      };
+      createAndAddAssignmentToTable(multiplication);
+      assignments.push(multiplication);
+      nextRowId++;
+
+      var examOne = {
+        id: nextRowId,
+        name: "Exam One",
+        totalPoints: 100,
+        sallyPointsEarned: 90,
+        samPointsEarned: 90,
+        alliePointsEarned: 80,
+        jonPointsEarned: 50
+      };
+      createAndAddAssignmentToTable(examOne);
+      assignments.push(examOne);
+      nextRowId++;
 
       localStorage.setItem("assignments", JSON.stringify(assignments));
     } else {

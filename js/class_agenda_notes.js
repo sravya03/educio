@@ -4,8 +4,42 @@ $(document).ready(function() {
 	var nextRowId = 2;
 
 	var rowForAttemptedDeletion = undefined;
+
+	function maybeInitAgendaNotes() {
+	    if (!localStorage.getItem("agendaNotes")) {
+	      var agendaNotes = [];
+
+	      var notes = {
+	        id: nextRowId,
+	        name: "Notes",
+	        agendaDoc: "FileName"
+	      };
+	      createAndAddAgendaNoteToTable(notes);
+	      agendaNotes.push(notes);
+	      nextRowId++;
+
+	      localStorage.setItem("agendaNotes", JSON.stringify(agendaNotes));
+	    } else {
+	      var agendaNotes = JSON.parse(localStorage.getItem("agendaNotes"));
+	      agendaNotes.forEach(function(agendaNotes) {
+	        createAndAddAgendaNoteToTable(agendaNotes);
+	      });
+	    }
+  	}
+
+  	function getAddAgendaNoteFormValues(id) {
+    // Add conditionals to prevent the modal from closing 
+    // when the form is invalid. Or simply use an actual form
+    // which will allow one to use custom validation functions.
+    return {
+      nextRowId : nextRowId,
+      name : jQuery("#agendaNoteName").val(),
+      notes : jQuery("#notesTextArea").val(),
+      agendaDoc : jQuery("#addAgendaDocList").val()
+    };
+  }
 	
-	function createAndAddAgendaNoteToTable(name) {
+	function createAndAddAgendaNoteToTable(params) {
 		var row = jQuery("<tr />", { id : "row-" + nextRowId });
 
 		/********** Delete Column *************/
@@ -24,7 +58,7 @@ $(document).ready(function() {
 		var deleteSign = jQuery("<span />", { class : "glyphicon glyphicon-minus" });
 
 		/************* Name Column *************/
-		var nameCol = jQuery("<td />").html(name);
+		var nameCol = jQuery("<td />").html(params.name);
 		
 		/*********** Dropdown Column ***********/
 		var dropdownCol = jQuery("<td />");
@@ -45,28 +79,28 @@ $(document).ready(function() {
 		 var notes = jQuery("#notesTextArea").val();
 		 var uploadedFilesContent = localStorage.getItem("uploadedFilesContent");
 		 var subRow =
-		 '<tr id="expanded-' + nextRowId + '" style="display:none;">' +
+		 '<tr id="expanded-' + params.nextRowId + '" style="display:none;">' +
           			'<td colspan="4">' +
            				'<table class="table">' +
               				'<tr>' +
               					'<div id="agendaItem" class="col-md-offset-2 col-md-9">' +
 	                				'<h3>Notes: </h3>' +
-	                				'<p>' + notes + '</p>' +
+	                				'<p>' + params.notes + '</p>' +
 	                				'<h3>Document: </h3> ' +
-	                				uploadedFilesContent +
+	                				params.uploadedFilesContent +
                 				'</div>	' +
                 			'</tr>' +
             			'</table>' +
           			'</td>' +
 			          '<script type="text/javascript">' +
-			            'jQuery( "#expand-' + nextRowId + '" ).click(function() {' +
+			            'jQuery( "#expand-' + params.nextRowId + '" ).click(function() {' +
 			              'var buttonElement = jQuery(this);' +
 			              'if (buttonElement.data("expanded") == 1) {' +
-			                'jQuery( "#expanded-' + nextRowId + '" ).slideUp( "slow", function() {' +
+			                'jQuery( "#expanded-' + params.nextRowId + '" ).slideUp( "slow", function() {' +
 			                  'buttonElement.data("expanded", "0");' +
 			                '});' +
 			              '} else {' +
-			                'jQuery( "#expanded-' + nextRowId + '" ).slideDown( "slow", function() {' +
+			                'jQuery( "#expanded-' + params.nextRowId + '" ).slideDown( "slow", function() {' +
 			                  'buttonElement.data("expanded", "1");' +
 			                '});' +
 			              '}' +
@@ -120,4 +154,7 @@ $(document).ready(function() {
     	createAndAddAgendaNoteToTable(name);
     	jQuery("#addNoteModal").modal("hide");
     });
+
+    maybeInitAgendaNotes();
+
 });
